@@ -1,71 +1,20 @@
-let mongoose = require('mongoose'),
-    express = require('express'),
-    router = express.Router();
+const router = require('express').Router();
+let User = require('../models/User');
 
-// user Model
-let userSchema = require('../models/User');
-
-// CREATE user
-router.route('/create-user').post((req, res, next) => {
-    userSchema.create(req.body, (error, data) => {
-        if (error) {
-            return next(error)
-        } else {
-            console.log(data)
-            res.json(data)
-        }
-    })
+router.route('/').get((req, res) => {
+    User.find()
+        .then(users => res.json(users))
+        .catch(err => res.status(400).json('Error: ' + err));
 });
 
-// READ users
-router.route('/').get((req, res) => {
-    userSchema.find((error, data) => {
-        if (error) {
-            return next(error)
-        } else {
-            res.json(data)
-        }
-    })
-})
+router.route('/add').post((req, res) => {
+    const username = req.body.username;
 
-// Get Single user
-router.route('/edit-user/:id').get((req, res) => {
-    userSchema.findById(req.params.id, (error, data) => {
-        if (error) {
-            return next(error)
-        } else {
-            res.json(data)
-        }
-    })
-})
+    const newUser = new User({username});
 
-
-// Update user
-router.route('/update-user/:id').put((req, res, next) => {
-    userSchema.findByIdAndUpdate(req.params.id, {
-        $set: req.body
-    }, (error, data) => {
-        if (error) {
-            return next(error);
-            console.log(error)
-        } else {
-            res.json(data)
-            console.log('user updated successfully !')
-        }
-    })
-})
-
-// Delete user
-router.route('/delete-user/:id').delete((req, res, next) => {
-    userSchema.findByIdAndRemove(req.params.id, (error, data) => {
-        if (error) {
-            return next(error);
-        } else {
-            res.status(200).json({
-                msg: data
-            })
-        }
-    })
-})
+    newUser.save()
+        .then(() => res.json('User added!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
 
 module.exports = router;
