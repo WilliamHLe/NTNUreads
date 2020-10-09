@@ -1,15 +1,18 @@
 import React from 'react';
 import './App.css';
-import Header from "./Header";
-
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Navigation from "./Navigation";
+import {Route, Switch} from "react-router-dom";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
     <div className="App">
-        <Header/>
-        <p>Dette er en test</p>
-
+        <Navigation/>
+        <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route path='/profile' component={Profile}/>
+        </Switch>
     </div>
   );
 }
