@@ -6,6 +6,8 @@ let dbConfig = require('./database/db');
 
 // Express Route
 const userRoute = require('../backend/routes/user.routes')
+const bookRoute = require('../backend/routes/book.routes')
+
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
@@ -20,12 +22,16 @@ mongoose.connect(dbConfig.db, {
 )
 
 const app = express();
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit:'50mb'}));
 app.use(bodyParser.urlencoded({
-    extended: true
+    extended: true,
+    limit: '50mb'
 }));
 app.use(cors());
+app.use(express.json({limit: '500mb'}));
+app.use(express.urlencoded({limit: '500mb'}));
 app.use('/user', userRoute)
+app.use('/books', bookRoute)
 
 
 // PORT
