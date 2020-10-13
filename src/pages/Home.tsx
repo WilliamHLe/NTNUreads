@@ -1,14 +1,21 @@
 import React from 'react';
-import {Button, Form, FormControl} from "react-bootstrap";
+import {Jumbotron, Container} from "react-bootstrap";
+import Search from "../components/Search";
 
 function Home() {
+
     return (
         <div>
-            <p>Dette er hjem</p>
-            <Form inline>
-                <FormControl type="text" placeholder="Tittel, forfatter eller ISBN" className="mr-sm-2" />
-                <Button variant="outline-success">Søk</Button>
-            </Form>
+            <Jumbotron fluid>
+                <Container>
+                    <h1>Velkommen til NTNUreads</h1>
+                    <p>
+                        Her kan du søke etter bøker, lagre dem som favoritter - og til og med skrive anmeldelser!
+                    </p>
+                    <Search/>
+                </Container>
+            </Jumbotron>
+
         </div>
     );
 }

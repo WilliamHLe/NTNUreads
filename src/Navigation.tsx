@@ -1,9 +1,9 @@
 import React from "react";
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
-function Navigation() {
+const Navigation = () => {
     // if logged in = true -> sett logintekst til "Logg ut"
     // if logged in = false -> sett logintekst til "Logg inn"
     return (
