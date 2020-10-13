@@ -21,4 +21,13 @@ router.route('/add').post((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/login').post((req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    const user = users.find(u => {
+        return u.email === email && hashedPassword === u.password
+    });
+});
+
 module.exports = router;

@@ -1,21 +1,28 @@
 import React, {useState} from "react";
 
 const LoginForm = () => {
-    const [username, setUserName] = useState("")
+    const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [content, setContent] = useState([""])
 
-    onFormSubmit = () => {
+    const onFormSubmit = (event:any) => {
         event.preventDefault();
+        setUsername(event.target.value)
+        setPassword(event.target.value)
 
-        this.props.onSubmit(this.state.term);
+        fetch('http://localhost:4000/user/')
+            .then(response => response.json())
+            .then((data) => {
+                console.log(data)
+            })
     }
 
     return (
         <div>
-            <form>
-                <input type="username" onSubmit={this.onFormSubmit}/>
-                <input type="password" />
-                <button>Logg inn</button>
+            <form onSubmit={onFormSubmit}>
+                <input value={username} type="username" />
+                <input value={password} type="password" />
+                <button type="submit">Logg inn</button>
             </form>
         </div>
     )
