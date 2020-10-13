@@ -1,13 +1,16 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import Search from "../components/Search";
 
 const Results = () => {
-    //her skal vi ha search component for å initialisere nytt søk, og også inkludere komponent for
+    //her kan vi ha search component for å initialisere nytt søk, og også inkludere komponent for
     //filtrering og sortering
     const { searchText } = useParams()
     return (
         <div>
-            <p>Dette er resultatene fra søket: {searchText}</p>
+            <Search/>
+            <h5>Dette er resultatene fra søket: {searchText}</h5>
+            {/*Legg inn tabell som viser resultat fra søk under her*/}
         </div>
     );
 }
