@@ -6,10 +6,10 @@ const reviewSchema = new Schema({
     name: String,
     rating: Number,
     review: String,
-    book: {
+/*    book: {
         type: Schema.Types.ObjectId,
         ref: "Book"
-    }
+    }*/
 }, {
     timestamps: true,
 });

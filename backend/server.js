@@ -7,6 +7,7 @@ let dbConfig = require('./database/db');
 // Express Route
 const userRoute = require('../backend/routes/user.routes')
 const bookRoute = require('../backend/routes/book.routes')
+const reviewRoute = require('../backend/routes/review.routes')
 
 
 // Connecting mongoDB Database
@@ -32,6 +33,7 @@ app.use(express.json({limit: '500mb'}));
 app.use(express.urlencoded({limit: '500mb'}));
 app.use('/user', userRoute)
 app.use('/books', bookRoute)
+app.use('/review', reviewRoute)
 
 
 // PORT

@@ -39,7 +39,11 @@ const bookSchema = new Schema({
     },
     publisher: {
         type: String
-    }
+    },
+   /* reviews: [{
+        type: Schema.Types.ObjectId,
+        ref: "Review"
+    }]*/
 });
 
 const Book = mongoose.model('Book', bookSchema);
