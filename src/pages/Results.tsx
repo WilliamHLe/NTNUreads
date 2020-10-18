@@ -14,10 +14,10 @@ const Results = () => {
         <div className="results-wrapper">
             <Container fluid>
                 <Row>
-                    <Col xs={3} className="sidebar-wrapper">
+                    <Col sm={4} className="sidebar-wrapper">
                         <Sidebar />
                     </Col>
-                    <Col  xs={9} className="page-content-wrapper">
+                    <Col  sm={8} className="page-content-wrapper">
                         {/*Legg inn tabell som viser resultat fra søk under her*/}
                         <h5>Dette er resultatene fra søket: {searchText}</h5>
                     </Col>
