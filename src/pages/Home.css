@@ -1,0 +1,14 @@
+.jumbo{
+    background: url("../images/stanislav-kondratiev-6pO3QFkk7hQ-unsplash.jpg") no-repeat center center;
+    background-size: cover;
+    min-height: 60vh;
+}
+
+.home-info {
+    color: white;
+    font-size: large;
+}
+
+.home-info h1 {
+    font-size: 80px;
+}

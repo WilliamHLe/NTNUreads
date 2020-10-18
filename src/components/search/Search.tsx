@@ -21,9 +21,9 @@ const Search = () => {
 
     return (
         <div>
-            <Form inline>
-                <FormControl type="text" placeholder="Tittel, forfatter eller ISBN" onChange={event => {setSearchText(event.target.value)}} className="col-lg-3" />
-                <Button variant="primary" onClick={handleSearchSubmit}>Søk</Button>
+            <Form inline onSubmit={handleSearchSubmit}>
+                <FormControl type="text" placeholder="Tittel, forfatter eller ISBN" onChange={event => {setSearchText(event.target.value)}} className="col" />
+                <Button variant="primary" type="submit">Søk</Button>
             </Form>
         </div>
     );
