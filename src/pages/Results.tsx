@@ -5,6 +5,9 @@ const Results = () => {
     //her kan vi ha search component for å initialisere nytt søk, og også inkludere komponent for
     //filtrering og sortering
     const { searchText } = useParams()
+
+
+
     return (
         <div>
             <h5>Dette er resultatene fra søket: {searchText}</h5>

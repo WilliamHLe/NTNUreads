@@ -5,9 +5,21 @@ import {useHistory} from "react-router-dom";
 const Search = () => {
 
     const [searchText, setSearchText] = useState("")
+    const [searchResult, setSearchResult] = useState([])
     const history = useHistory();
 
     const handleSearchSubmit = () => {
+        /**
+         * API kall til databasen med søkeordet
+         */
+        fetch(`http://localhost:4000/books/search/${searchText}`)
+            .then(response => response.json())
+            .then((data) => {
+                setSearchResult(data)
+                console.log(data)
+            })
+
+
         //Det eneste denne gjør for øyeblikket er å route til results og sende med searchText som param
         //Må hente relevant data fra datasett ved å bruke searchText
         if (searchText !== "") {
