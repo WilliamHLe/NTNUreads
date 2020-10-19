@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+const User = require('./User').schema;
+
 const bookSchema = new Schema({
     bookID: {
         type: Number,
@@ -39,7 +41,8 @@ const bookSchema = new Schema({
     },
     publisher: {
         type: String
-    }
+    },
+    users: [{type: mongoose.Schema.ObjectID,ref: 'User'}]
 });
 
 const Book = mongoose.model('Book', bookSchema);
