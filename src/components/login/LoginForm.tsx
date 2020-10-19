@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {setJsonSession} from "../storage/JsonStorage";
 
 const LoginForm = () => {
     const [username, setUsername] = useState("")
@@ -7,21 +8,25 @@ const LoginForm = () => {
 
     const onFormSubmit = (event:any) => {
         event.preventDefault();
-        setUsername(event.target.value)
-        setPassword(event.target.value)
 
-        fetch('http://localhost:4000/user/')
-            .then(response => response.json())
-            .then((data) => {
-                console.log(data)
-            })
+        fetch('http://localhost:4000/user/login/'+{username}.username+'/'+{password}.password+'', {
+            method: "get",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        })
+            .then( (response) => {
+                console.log(response)
+            });
+
     }
 
     return (
         <div>
             <form onSubmit={onFormSubmit}>
-                <input value={username} type="username" />
-                <input value={password} type="password" />
+                <input value={username} type="username" onChange={(e)=>setUsername(e.target.value)}/>
+                <input value={password} type="password" onChange={(e)=>setPassword(e.target.value)}/>
                 <button type="submit">Logg inn</button>
             </form>
         </div>

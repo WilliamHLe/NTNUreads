@@ -21,13 +21,13 @@ router.route('/add').post((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/login').post((req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
+router.route('/login/:username/:password').get((req, res) => {
+    const username = req.params.username;
+    const password = req.params.password;
 
-    const user = users.find(u => {
-        return u.email === email && hashedPassword === u.password
-    });
+    User.find({'username':username,'password':password})
+        .then(users => res.json(users))
+        .catch(err => res.status(400).json('Error: ' + err));
 });
 
 module.exports = router;
