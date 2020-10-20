@@ -4,6 +4,7 @@ import {Container, Row, Col, Button, Table} from 'react-bootstrap';
 import Sidebar from "../components/filter/Sidebar";
 
 import "./Results.css"
+import Page from "../components/Page";
 
 
 const Results = () => {
@@ -11,6 +12,7 @@ const Results = () => {
     //filtrering og sortering
     const { searchText } = useParams()
     const [searchResult, setSearchResult] = useState<any[]>([])
+    const [count, setCount] = useState(10)
 
     /*useEffect(() => {
         console.log(searchResult)
@@ -24,6 +26,12 @@ const Results = () => {
             })
 
     }, [searchText])
+
+
+    const handleChange = (nv:any) => {
+        setCount(nv)
+    }
+
 
 
     const [showFilters, setShowFilters] = useState(false)
@@ -74,6 +82,7 @@ const Results = () => {
 
                             </tbody>
                         </Table>
+                        <Page onChange={handleChange}/>
                     </Col>
                 </Row>
             </Container>

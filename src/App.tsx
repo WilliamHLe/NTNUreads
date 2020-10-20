@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Results from "./pages/Results";
 import CreateReview from "./components/CreateReview";
+import Page from "./components/Page";
 
 function App() {
   return (
