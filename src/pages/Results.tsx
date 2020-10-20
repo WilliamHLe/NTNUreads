@@ -38,8 +38,8 @@ const Results = () => {
         <div className="results-wrapper">
             <Container fluid>
                 <Row>
-                    {/*This column shows up at xs screen size*/}
-                    <Col sm={4} className={"d-block d-sm-none"}>
+                    {/*This column is hidden at screens wider than md*/}
+                    <Col md={3} className={"d-md-none"}>
                         <Button className="btn-group-toggle" type="button" variant={"primary"} onClick={ toggleFilters }>
                             Filtrer
                         </Button>
@@ -47,11 +47,11 @@ const Results = () => {
                             <Sidebar/>
                         </div>
                     </Col>
-                    {/*This column shows up at all screen sizes except xs*/}
-                    <Col sm={4} className={"d-none d-sm-block"}>
+                    {/*This column is hidden at screens smaller than md*/}
+                    <Col md={3} className={"d-none d-md-block"}>
                         <Sidebar/>
                     </Col>
-                    <Col  sm={8} className="page-content-wrapper">
+                    <Col  md={9} className="page-content-wrapper">
                         <h5>Dette er resultatene fra søket: {searchText}</h5>
                         <Table striped bordered hover>
                             <thead>

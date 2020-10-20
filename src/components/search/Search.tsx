@@ -1,11 +1,11 @@
 import {Button, Form, FormControl} from "react-bootstrap";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
-import {log} from "util";
+//import {log} from "util";
 
 const Search = () => {
 
-    const [searchResult, setSearchResult] = useState([])
+    //const [searchResult, setSearchResult] = useState([])
     const [searchText, setSearchText] = useState("")
     const history = useHistory();
 
