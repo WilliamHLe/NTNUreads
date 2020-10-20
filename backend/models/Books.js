@@ -42,8 +42,7 @@ const bookSchema = new Schema({
     publisher: {
         type: String
     },
-    users: [{type:Schema.Types.ObjectID,ref: 'User'}]
-    },
+    users: [{type:Schema.Types.ObjectID,ref: 'User'}],
    /* reviews: [{
         type: Schema.Types.ObjectId,
         ref: "Review"
