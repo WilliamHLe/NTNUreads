@@ -1,23 +1,33 @@
 import {Button, Form, FormControl} from "react-bootstrap";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
+import {log} from "util";
 
 const Search = () => {
 
-    const [searchText, setSearchText] = useState("")
     const [searchResult, setSearchResult] = useState([])
+    const [searchText, setSearchText] = useState("")
     const history = useHistory();
 
-    const handleSearchSubmit = () => {
-        /**
-         * API kall til databasen med søkeordet
-         */
+    /*useEffect(() => {
+        console.log(searchResult)
+    }, [searchResult])
+
+    const fetchData = () => {
         fetch(`http://localhost:4000/books/search/${searchText}`)
             .then(response => response.json())
-            .then((data) => {
-                setSearchResult(data)
-                console.log(data)
+            .then((data) => {          setSearchResult(data)
+
             })
+        console.log(searchResult)
+    }*/
+
+
+    const handleSearchSubmit = (event:any) => {
+        event.preventDefault()
+        //fetchData()
+
+
 
 
         //Det eneste denne gjør for øyeblikket er å route til results og sende med searchText som param
@@ -34,7 +44,7 @@ const Search = () => {
     return (
         <div>
             <Form inline onSubmit={handleSearchSubmit}>
-                <FormControl type="text" placeholder="Tittel, forfatter eller ISBN" onChange={event => {setSearchText(event.target.value)}} className="col" />
+                <FormControl type="text" placeholder="Tittel, forfatter eller ISBN" value={searchText} onChange={event => {setSearchText(event.target.value)}} className="col" />
                 <Button variant="primary" type="submit">Søk</Button>
             </Form>
         </div>
