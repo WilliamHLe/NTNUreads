@@ -23,6 +23,7 @@ const Results = () => {
         <div className="results-wrapper">
             <Container fluid>
                 <Row>
+                    {/*This column shows up at xs screen size*/}
                     <Col sm={4} className={"d-block d-sm-none"}>
                         <Button className="btn-group-toggle" type="button" variant={"primary"} onClick={ toggleFilters }>
                             Filtrer
@@ -31,6 +32,7 @@ const Results = () => {
                             <Sidebar/>
                         </div>
                     </Col>
+                    {/*This column shows up at all screen sizes except xs*/}
                     <Col sm={4} className={"d-none d-sm-block"}>
                         <Sidebar/>
                     </Col>
