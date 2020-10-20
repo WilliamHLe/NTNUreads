@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
-const Book = require('./Books').schema;
+const Book = require('./Books.js').schema;
 
 const userSchema = new Schema({
     username: {
@@ -15,7 +15,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    books: [{type:mongoose.Schema.ObjectID,ref: 'Books'}]
+    books: [{type:Schema.Types.ObjectID,ref: 'Book'}]
 }, {
     timestamps: true,
 });
