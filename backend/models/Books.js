@@ -43,7 +43,14 @@ const bookSchema = new Schema({
         type: String
     },
     users: [{type:Schema.Types.ObjectID,ref: 'User'}]
+    },
+   /* reviews: [{
+        type: Schema.Types.ObjectId,
+        ref: "Review"
+    }]*/
 });
+
+bookSchema.index({title: 'text', authors: 'text', isbn: 'text', publisher: 'text'});
 
 const Book = mongoose.model('Book', bookSchema);
 

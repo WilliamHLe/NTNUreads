@@ -8,6 +8,12 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/search/:search').get((req, res) => {
+    Book.find({$text: {$search: `\"${req.params.search}\"`}})
+        .then(books => res.json(books))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 router.route('/add').post((req, res) => {
     const bookID = req.body.bookID;
     const title = req.body.title;
