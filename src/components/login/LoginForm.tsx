@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import {setJsonSession} from "../storage/JsonStorage";
 
 const LoginForm = () => {
     const [username, setUsername] = useState("")
@@ -16,9 +15,13 @@ const LoginForm = () => {
                 'Content-Type': 'application/json'
             },
         })
-            .then( (response) => {
-                console.log(response)
-            });
+            .then(res => res.json())
+            .then(
+                (result) =>{
+                    console.log(JSON.stringify(result[0]));
+                    sessionStorage.setItem("user",JSON.stringify(result[0]));
+                }
+            );
 
     }
 

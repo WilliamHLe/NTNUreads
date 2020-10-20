@@ -26,7 +26,7 @@ router.route('/login/:username/:password').get((req, res) => {
     const password = req.params.password;
 
     User.find({'username':username,'password':password})
-        .then(users => res.json(users))
+        .then(users => res.json(users),console.log("what"))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
