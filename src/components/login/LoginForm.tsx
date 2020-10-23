@@ -1,9 +1,18 @@
 import React, {useState} from "react";
+import {useHistory} from "react-router-dom";
 
 const LoginForm = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [content, setContent] = useState([""])
+    const history = useHistory();
+
+    if(sessionStorage.getItem("user")) {
+        sessionStorage.removeItem("user");
+        history.push("/");
+    }
+
+
 
     const onFormSubmit = (event:any) => {
         event.preventDefault();
@@ -20,6 +29,7 @@ const LoginForm = () => {
                 (result) =>{
                     console.log(JSON.stringify(result[0]));
                     sessionStorage.setItem("user",JSON.stringify(result[0]));
+                    history.push("/");
                 }
             );
 

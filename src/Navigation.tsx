@@ -17,7 +17,7 @@ const Navigation = () => {
                     <Nav className="ml-auto">
                         <Nav.Link as={Link} to="/">Hjem</Nav.Link>
                         <Nav.Link as={Link} to="/profile">Profil</Nav.Link>
-                        <Nav.Link as={Link} to="/login">Logg inn</Nav.Link>
+                        <Nav.Link as={Link} to="/login">Logg inn/ut</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
