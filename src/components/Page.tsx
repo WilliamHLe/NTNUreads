@@ -32,7 +32,8 @@ const Page = (props:any) => {
                 <Pagination.Prev onClick={prevPage}/>
                 <Pagination.Next onClick={nextPage}/>
             </Pagination>
-            <p>Antall resultater: {countRes}</p>
+            <p>Viser: {countRes} resultater</p>
+            <p>Side: {pagination} av {Math.round(countRes/10 + 1)}</p>
         </div>
     )
 }

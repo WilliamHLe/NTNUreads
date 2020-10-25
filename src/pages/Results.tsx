@@ -15,11 +15,11 @@ const Results = () => {
     const [searchResult, setSearchResult] = useState<any[]>([])
     const [count, setCount] = useState(0)
     const [countRes, setCountRes] = useState(0)
-    const [sortBy, setSortBy] = useState("average_rating")
+    const [sortBy, setSortBy] = useState<any>("")
 
-    /*useEffect(() => {
-        console.log(countRes)
-    })*/
+    useEffect(() => {
+        console.log(sortBy)
+    }, [sortBy])
 
     useEffect(()=>{
         fetch(`http://localhost:4000/books/search/${searchText}`)
@@ -32,23 +32,22 @@ const Results = () => {
 
 
     useEffect(()=>{
-
         fetch(`http://localhost:4000/books/search/${searchText}/${count}/${sortBy}`)
             .then(response => response.json())
             .then((data) => {
                 setSearchResult(data)
             })
 
-    }, [searchText] [count] [sortBy])
+    }, [searchText] [sortBy] )
 
 
     const handlePagination = (ct:any) => {
         setCount(ct)
+        console.log(sortBy)
     }
 
     const handleSort = (ct:any) => {
         setSortBy(ct)
-        console.log(ct)
     }
 
 
