@@ -25,6 +25,17 @@ router.route('/search/:search/:skip').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+// Skip and limit are used for pagination
+router.route('/search/:search/:skip/:sort').get((req, res) => {
+    const sortt = req.params.sort
+    Book.find({$text: {$search: `\"${req.params.search}\"`}})
+        .sort(sortt)
+        .skip(parseInt(req.params.skip))
+        .limit(10)
+        .then(books => res.json(books))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 router.route('/add').post((req, res) => {
     const bookID = req.body.bookID;
     const title = req.body.title;

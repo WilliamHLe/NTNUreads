@@ -5,6 +5,7 @@ import Sidebar from "../components/filter/Sidebar";
 
 import "./Results.css"
 import Page from "../components/Page";
+import Sorting from "../components/Sorting";
 
 
 const Results = () => {
@@ -14,10 +15,11 @@ const Results = () => {
     const [searchResult, setSearchResult] = useState<any[]>([])
     const [count, setCount] = useState(0)
     const [countRes, setCountRes] = useState(0)
+    const [sortBy, setSortBy] = useState("average_rating")
 
     /*useEffect(() => {
         console.log(countRes)
-    }, [countRes])*/
+    })*/
 
     useEffect(()=>{
         fetch(`http://localhost:4000/books/search/${searchText}`)
@@ -28,19 +30,25 @@ const Results = () => {
 
     }, [countRes])
 
+
     useEffect(()=>{
 
-        fetch(`http://localhost:4000/books/search/${searchText}/${count}`)
+        fetch(`http://localhost:4000/books/search/${searchText}/${count}/${sortBy}`)
             .then(response => response.json())
             .then((data) => {
                 setSearchResult(data)
             })
 
-    }, [searchText] [count])
+    }, [searchText] [count] [sortBy])
 
 
-    const handleChange = (ct:any) => {
+    const handlePagination = (ct:any) => {
         setCount(ct)
+    }
+
+    const handleSort = (ct:any) => {
+        setSortBy(ct)
+        console.log(ct)
     }
 
 
@@ -71,6 +79,7 @@ const Results = () => {
                     </Col>
                     <Col  md={9} className="page-content-wrapper">
                         <h5>Dette er resultatene fra søket: {searchText}</h5>
+                        <Sorting chan={handleSort} />
                         <Table striped bordered hover>
                             <thead>
                             <tr>
@@ -92,7 +101,7 @@ const Results = () => {
 
                             </tbody>
                         </Table>
-                        <Page change={handleChange} countRes={countRes}/>
+                        <Page change={handlePagination} countRes={countRes}/>
                     </Col>
                 </Row>
 
