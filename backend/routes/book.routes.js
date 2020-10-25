@@ -8,9 +8,16 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/search/:search').get((req, res) => {
+    Book.find({$text: {$search: `\"${req.params.search}\"`}})
+        .count()
+        .then(books => res.json(books))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 router.route('/search/:search/:skip').get((req, res) => {
     Book.find({$text: {$search: `\"${req.params.search}\"`}})
-        .skip(req.params.skip)
+        .skip(parseInt(req.params.skip))
         .limit(10)
         .then(books => res.json(books))
         .catch(err => res.status(400).json('Error: ' + err));

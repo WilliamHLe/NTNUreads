@@ -12,26 +12,36 @@ const Results = () => {
     //filtrering og sortering
     const { searchText } = useParams()
     const [searchResult, setSearchResult] = useState<any[]>([])
-    const [count, setCount] = useState(10)
+    const [count, setCount] = useState(0)
+    const [countRes, setCountRes] = useState(0)
 
     /*useEffect(() => {
-        console.log(searchResult)
-    }, [searchResult])*/
+        console.log(countRes)
+    }, [countRes])*/
 
     useEffect(()=>{
         fetch(`http://localhost:4000/books/search/${searchText}`)
             .then(response => response.json())
             .then((data) => {
+                setCountRes(data)
+            })
+
+    }, [countRes])
+
+    useEffect(()=>{
+
+        fetch(`http://localhost:4000/books/search/${searchText}/${count}`)
+            .then(response => response.json())
+            .then((data) => {
                 setSearchResult(data)
             })
 
-    }, [searchText])
+    }, [searchText] [count])
 
 
-    const handleChange = (nv:any) => {
-        setCount(nv)
+    const handleChange = (ct:any) => {
+        setCount(ct)
     }
-
 
 
     const [showFilters, setShowFilters] = useState(false)
@@ -82,11 +92,11 @@ const Results = () => {
 
                             </tbody>
                         </Table>
-                        <Page onChange={handleChange}/>
+                        <Page change={handleChange} countRes={countRes}/>
                     </Col>
                 </Row>
-            </Container>
 
+            </Container>
         </div>
     );
 }

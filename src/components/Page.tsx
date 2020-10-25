@@ -3,20 +3,27 @@ import { Pagination } from "react-bootstrap";
 
 const Page = (props:any) => {
     const [pagination, setPagination] = useState(1)
-    const [count, setCount] = useState(10)
+    const [count, setCount] = useState(0)
+    const [countRes, setCountRes] = useState(0)
+
+    useEffect(() => {
+        setCountRes(props.countRes)
+    })
 
     const prevPage = () => {
         if (pagination > 1) {
             setPagination(pagination - 1)
             setCount(count - 10)
-            props.onChange(count)
+            props.change(count-10)
         }
     }
 
     const nextPage = () => {
-        setPagination(pagination + 1)
-        setCount(count + 10)
-        props.onChange(count)
+        if ((countRes/10) >= pagination ) {
+            setPagination(pagination + 1)
+            setCount(count + 10)
+            props.change(count+10)
+        }
     }
 
     return(
@@ -25,6 +32,7 @@ const Page = (props:any) => {
                 <Pagination.Prev onClick={prevPage}/>
                 <Pagination.Next onClick={nextPage}/>
             </Pagination>
+            <p>Antall resultater: {countRes}</p>
         </div>
     )
 }
