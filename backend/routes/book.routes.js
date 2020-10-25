@@ -8,6 +8,7 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+// Used to return the count of the result
 router.route('/search/:search').get((req, res) => {
     Book.find({$text: {$search: `\"${req.params.search}\"`}})
         .count()
@@ -15,6 +16,7 @@ router.route('/search/:search').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+// Skip and limit are used for pagination
 router.route('/search/:search/:skip').get((req, res) => {
     Book.find({$text: {$search: `\"${req.params.search}\"`}})
         .skip(parseInt(req.params.skip))
