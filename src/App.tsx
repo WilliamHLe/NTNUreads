@@ -16,6 +16,7 @@ function App() {
             <Route path='/profile' component={Profile}/>
             {/*<Route path='/results' component={Results}/>*/}
             <Route path="/results/:searchText"  component={Results} />
+            {/*<Route path="/results/:searchText?authors=:filterAuthors&average_rating=:filterRating" component={Results} />*/}
         </Switch>
         <CreateReview />
     </div>

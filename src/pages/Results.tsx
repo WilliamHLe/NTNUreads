@@ -17,7 +17,6 @@ const Results = () => {
     }, [searchResult])*/
 
 
-    //DETTE ER DEN TIDLIGERE FETCH, SOM HENTER ALLE RESULTAT FOR searchText
 /*
     useEffect(()=>{
         fetch(`http://localhost:4000/books/search/${searchText}`)
@@ -28,29 +27,53 @@ const Results = () => {
 
     }, [searchText])
 */
-
-    // Dersom vi skal ta inn lister - bruk disse. Ser litt rart ut i path, vises som .../search/Harry%20Potter/authors=J.K.%20Rowling,John%20Granger....
-    /*
-    const [filterAuthors, setFilterAuthors] = useState<string[]>(["J.K. Rowling", "John Granger"])
-    const [filterRating, setFilterRating ]= useState<number[]>([3, 4])
-    */
-
     //Dersom vi skal ta inn enkeltvariabler - bruk disse. Skal få satt state ved å bruke checkbox/select i Sidebar - bruk Redux til statehåndtering her?
-    const [filterAuthors, setFilterAuthors] = useState<string>("J.K. Rowling")
-    const [filterRating, setFilterRating ]= useState<number>(4)
+    //const [filterRating, setFilterRating ]= useState<number>(1)
+    const [filterAuthors, setFilterAuthors] = useState<string>("")
+    //const [filterYear, setFilterYear] = useState<number>(4)
+    const [showFilters, setShowFilters] = useState(false)
+
 
     //Her prøver jeg å få tak i søkeresultat på de bestemte filterne for testing. Hva skal vi evt. gjøre her dersom vi ikke har filter? Ny query hver gang?
     useEffect(()=>{
-        fetch(`http://localhost:4000/books/search/${searchText}?authors=${filterAuthors}&average_rating=${filterRating}`)
+        if (filterAuthors != "") {
+            fetch(`http://localhost:4000/books/search/${searchText}/${filterAuthors}`)
+                .then(response => response.json())
+                .then((data) => {
+                    setSearchResult(data)
+                })
+        }
+
+        //history.push(`/results/${searchText}?authors=${filterAuthors}&average_rating=${filterRating}`)
+        //fetch(`http://localhost:4000/books/search/${searchText}?authors=${filterAuthors}&average_rating=${filterRating}`)
+        //fetch(`http://localhost:4000/books/search/${searchText}/${filterAuthors}/${filterYear}`) //DETTE FUNGERER!
+        fetch(`http://localhost:4000/books/search/${searchText}`)
             .then(response => response.json())
             .then((data) => {
                 setSearchResult(data)
             })
 
-    }, [searchText, filterAuthors, filterRating])
+    }, [searchText, filterAuthors])
+
+    const handleChangeAuthors = (ct:any) => {
+        setFilterAuthors(ct)
+        console.log(ct)
+    }
 
 
-    const [showFilters, setShowFilters] = useState(false)
+    /*
+    const handleChangeRating = (ct:any) => {
+        setFilterRating(ct)
+        console.log(ct)
+    }
+
+
+    const handleChangeYear = (ct:any) => {
+        setFilterYear(ct)
+        console.log(ct)
+    }
+    */
+
 
     const toggleFilters = () => {
         setShowFilters(!showFilters)
@@ -64,16 +87,16 @@ const Results = () => {
                 <Row>
                     {/*This column is hidden at screens wider than md*/}
                     <Col md={3} className={"d-md-none"}>
-                        <Button className="btn-group-toggle" type="button" variant={"primary"} onClick={ toggleFilters }>
+                        <Button className="btn-group-toggle" type="button" variant={"primary"} onClick={ toggleFilters } block>
                             Filtrer
                         </Button>
                         <div className={"collapse" + show}>
-                            <Sidebar searchResult={searchResult}/>
+                            <Sidebar searchResult={searchResult} changeAuthor={handleChangeAuthors}/>
                         </div>
                     </Col>
                     {/*This column is hidden at screens smaller than md*/}
                     <Col md={3} className={"d-none d-md-block"}>
-                        <Sidebar searchResult={searchResult}/>
+                        <Sidebar searchResult={searchResult} changeAuthor={handleChangeAuthors}/>
                     </Col>
                     <Col  md={9} className="page-content-wrapper">
                         <h5>Dette er resultatene fra søket: {searchText}</h5>
@@ -94,6 +117,7 @@ const Results = () => {
                                     <td>{item.authors}</td>
                                     <td>{item.title}</td>
                                     <td>{item.average_rating}</td>
+                                    {/*<td>{item.language_code}</td>*/}
                                 </tr>
                             )}
 
