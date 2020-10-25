@@ -2,8 +2,14 @@ import React from "react";
 import ShowRating from "./ShowRating";
 import {Form} from "react-bootstrap";
 
+interface SidebarProps {
+    searchResult: any[];
+}
 
-const Sidebar = () => {
+const Sidebar = ({searchResult}: SidebarProps) => {
+
+    console.log(searchResult);
+
 
     return (
         <div>

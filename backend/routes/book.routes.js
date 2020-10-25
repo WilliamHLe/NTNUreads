@@ -8,11 +8,44 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+// DETTE ER DEN ORIGINALE - FUNGERER
+/*
 router.route('/search/:search').get((req, res) => {
     Book.find({$text: {$search: `\"${req.params.search}\"`}})
         .then(books => res.json(books))
         .catch(err => res.status(400).json('Error: ' + err));
 });
+
+ */
+
+
+//EMMA TESTER
+
+//noe galt med path her?
+router.route('/search/:search?authors=:filterAuthors&average_rating=:filterRating').get((req, res) => {
+//router.route('/search/:search').get((req, res) => {
+
+    let filterAuthors = req.query.authors
+    let filterRating = req.query.average_rating
+
+    let randomAuth = ["J.K. Rowling", "John Granger"]
+
+    Book.find(
+            {
+                $text: {$search: `\"${req.params.search}\"`}, //search
+
+                //authors: {$in:randomAuth}, average_rating: {$gte: 4.42, $lte: 4.56}                              //for testing
+                //authors: {$in:filterAuthors}, average_rating: {$gte: filterRating[0], $lte: filterRating[1]}     //for list parameters
+                authors: filterAuthors, average_rating: {$gte: filterRating}                                     //for single value parameters
+
+                //$or: [{authors: filterAuthors}, {average_rating: {$gte: filterRating}}]
+            }
+        )
+        .then(books => res.json(books))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
 
 router.route('/add').post((req, res) => {
     const bookID = req.body.bookID;
