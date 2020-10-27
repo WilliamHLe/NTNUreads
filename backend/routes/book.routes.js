@@ -26,9 +26,19 @@ router.route('/search/:search/:skip').get((req, res) => {
 });
 
 // Skip and limit are used for pagination
-router.route('/search/:search/:skip/:sort').get((req, res) => {
+router.route('/search/:search/:skip/:sort/:rating').get((req, res) => {
     const sortt = req.params.sort
-    Book.find({$text: {$search: `\"${req.params.search}\"`}})
+    const rating = req.params.rating
+    Book.find({$text: {$search: `\"${req.params.search}\"`},
+
+        //authors: {$in:randomAuth}, average_rating: {$gte: 4.42, $lte: 4.56}                              //for testing
+        //authors: {$in:filterAuthors}, average_rating: {$gte: filterRating[0], $lte: filterRating[1]}     //for list parameters
+
+        //authors: filterAuthors, average_rating: {$gte: filterRating}                                     //for single value parameters
+
+        average_rating: {$gte: 4.42, $lte: 4.56}
+
+    })
         .sort(sortt)
         .skip(parseInt(req.params.skip))
         .limit(10)

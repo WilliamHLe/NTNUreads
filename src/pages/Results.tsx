@@ -16,6 +16,7 @@ const Results = () => {
     const [count, setCount] = useState(0)
     const [countRes, setCountRes] = useState(0)
     const [sortBy, setSortBy] = useState<any>("")
+    const [filter, setFilter] = useState<any>([""])
 
     useEffect(() => {
         console.log(sortBy)
@@ -49,6 +50,10 @@ const Results = () => {
     const handleSort = (ct:any) => {
         setSortBy(ct)
     }
+    const handleFilter = (ct:any) => {
+        setFilter([ct])
+        console.log(filter)
+    }
 
 
     const [showFilters, setShowFilters] = useState(false)
@@ -69,12 +74,12 @@ const Results = () => {
                             Filtrer
                         </Button>
                         <div className={"collapse" + show}>
-                            <Sidebar/>
+                            <Sidebar chang={handleFilter}/>
                         </div>
                     </Col>
                     {/*This column is hidden at screens smaller than md*/}
                     <Col md={3} className={"d-none d-md-block"}>
-                        <Sidebar/>
+                        <Sidebar chang={handleFilter}/>
                     </Col>
                     <Col  md={9} className="page-content-wrapper">
                         <h5>Dette er resultatene fra søket: {searchText}</h5>

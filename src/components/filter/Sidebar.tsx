@@ -1,13 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 import ShowRating from "./ShowRating";
 import {Form} from "react-bootstrap";
 
+interface SideBarProps {
+    chang: any;
+}
+const Sidebar = ({chang}: SideBarProps) => {
 
-const Sidebar = () => {
-
+    const handleChang = (e:any) => {
+        chang(e.target.value)
+    }
     return (
         <div>
             <Form>
+                <Form >
+                    <input type="checkbox" value="1" onChange={handleChang}/>
+                    <input type="checkbox" value="3" onChange={handleChang}/>
+
+                </Form>
                 <h5>Gjennomsnittlig rating</h5>
                 {/*HER MÅ 1 STJERNE VÆRE ALLE BØKER FRA 0-1.5, 2 STJERNER FRA 1.5-2.5 OSV?*/}
                 <Form.Group controlId={"FormRating"}>
