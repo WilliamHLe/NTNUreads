@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import {Container, Row, Col, Button, Table} from 'react-bootstrap';
 import Sidebar from "../components/filter/Sidebar";
+import {useHistory} from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import "./Results.css"
 
@@ -11,6 +13,8 @@ const Results = () => {
     //filtrering og sortering
     const { searchText } = useParams()
     const [searchResult, setSearchResult] = useState<any[]>([])
+    const [bookId,setBookId] = useState<any>()
+    const history = useHistory();
 
     /*useEffect(() => {
         console.log(searchResult)
@@ -30,6 +34,11 @@ const Results = () => {
 
     const toggleFilters = () => {
         setShowFilters(!showFilters)
+    }
+
+    const toDetails = (id:any) => {
+        console.log(id);
+        history.push(`/book/${id}`)
     }
 
     const show = showFilters ? "show" : "" ;
@@ -60,6 +69,7 @@ const Results = () => {
                                 <th>Forfatter</th>
                                 <th>Tittel</th>
                                 <th>Vurdering</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -69,6 +79,7 @@ const Results = () => {
                                     <td>{item.authors}</td>
                                     <td>{item.title}</td>
                                     <td>{item.average_rating}</td>
+                                    <td onClick={() => toDetails(item._id)}>Detajer</td>
                                 </tr>
                             )}
 

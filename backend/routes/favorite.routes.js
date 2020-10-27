@@ -17,7 +17,7 @@ router.route('/book/:book').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post((req, res) => {
+router.route('/add').put((req, res) => {
     User.findOneAndUpdate({_id: req.body.user},
         {$push: {books: req.body.book}},
         { new: true, useFindAndModify: false })
@@ -28,6 +28,27 @@ router.route('/add').post((req, res) => {
                 .then(books => {
                     res.json(books);
                 })
+        })
+})
+
+router.route('/remove').put((req, res) => {
+    User.findOneAndUpdate({_id: req.body.user},
+        {$pull: {books: req.body.book}},
+        { new: true, useFindAndModify: false })
+        .then(users => {
+            Book.findOneAndUpdate({_id: req.body.book},
+                {$pull: {users: req.body.user}},
+                { new: true, useFindAndModify: false })
+                .then(books => {
+                    res.json(books);
+                })
+        })
+})
+
+router.route('/find/:user/:book').get((req, res) => {
+    User.findOne({_id: req.params.user, books:req.params.book})
+        .then(users => {
+            res.json(users)
         })
 })
 
