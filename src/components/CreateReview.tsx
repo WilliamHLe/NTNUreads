@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 
-const CreateReview = () => {
+const CreateReview = (props:any) => {
+    const book = props.book;
+
     const [name, setName] = useState("wdaa")
     const [rating, setRating] = useState(0)
     const [review, setReview] = useState("")
@@ -18,7 +20,8 @@ const CreateReview = () => {
             body: JSON.stringify({
                 name: name,
                 rating: rating,
-                review: review
+                review: review,
+                book: book
             })
         })
             .then( (response) => {
