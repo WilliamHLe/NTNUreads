@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import {Container, Row, Col, Button, Table} from 'react-bootstrap';
 import Sidebar from "../components/filter/Sidebar";
+import {useHistory} from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import "./Results.css"
 import Page from "../components/Page";
@@ -16,6 +18,8 @@ const Results = () => {
     const [count, setCount] = useState(0)
     const [countRes, setCountRes] = useState(0)
     const [sortBy, setSortBy] = useState<any>("")
+    const [bookId,setBookId] = useState<any>()
+    const history = useHistory();
 
     useEffect(() => {
         console.log(sortBy)
@@ -57,6 +61,11 @@ const Results = () => {
         setShowFilters(!showFilters)
     }
 
+    const toDetails = (id:any) => {
+        console.log(id);
+        history.push(`/book/${id}`)
+    }
+
     const show = showFilters ? "show" : "" ;
 
     return (
@@ -86,6 +95,7 @@ const Results = () => {
                                 <th>Forfatter</th>
                                 <th>Tittel</th>
                                 <th>Vurdering</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -95,6 +105,7 @@ const Results = () => {
                                     <td>{item.authors}</td>
                                     <td>{item.title}</td>
                                     <td>{item.average_rating}</td>
+                                    <td onClick={() => toDetails(item._id)}>Detajer</td>
                                 </tr>
                             )}
 

@@ -7,6 +7,7 @@ let dbConfig = require('./database/db');
 // Express Route
 const userRoute = require('../backend/routes/user.routes')
 const bookRoute = require('../backend/routes/book.routes')
+const favoriteRoute = require('../backend/routes/favorite.routes')
 const reviewRoute = require('../backend/routes/review.routes')
 
 
@@ -33,6 +34,7 @@ app.use(express.json({limit: '500mb'}));
 app.use(express.urlencoded({limit: '500mb'}));
 app.use('/user', userRoute)
 app.use('/books', bookRoute)
+app.use('/favorite', favoriteRoute)
 app.use('/review', reviewRoute)
 
 

@@ -36,6 +36,12 @@ router.route('/search/:search/:skip/:sort').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/:id').get((req, res) => {
+    Book.find({_id: req.params.id})
+        .then(books => res.json(books))
+        .catch(err => res.status(400).json('Error: ' + err))
+});
+
 router.route('/add').post((req, res) => {
     const bookID = req.body.bookID;
     const title = req.body.title;

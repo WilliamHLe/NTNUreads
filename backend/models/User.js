@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
+const Book = require('./Books.js').schema;
 
 const userSchema = new Schema({
     username: {
@@ -10,6 +11,11 @@ const userSchema = new Schema({
         trim: true,
         minlength: 3
     },
+    password: {
+        type: String,
+        required: true
+    },
+    books: [{type:Schema.Types.ObjectID,ref: 'Book'}]
 }, {
     timestamps: true,
 });

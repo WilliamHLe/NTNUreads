@@ -1,11 +1,20 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {useHistory} from "react-router-dom"
+import UserPage from "../components/user/UserPage";
+import {Table} from "react-bootstrap";
 
 const Profile = () => {
-    return (
-        <div>
-            <p>Dette er profilen</p>
-        </div>
-    );
+
+    const history = useHistory();
+    const [searchResult, setSearchResult] = useState<any[]>([])
+
+    if(sessionStorage.getItem("user")) {
+        console.log(sessionStorage.getItem("user"))
+        return <UserPage />
+    } else {
+        history.push("/");
+        return <div></div>
+    }
 }
 
 export default Profile;
