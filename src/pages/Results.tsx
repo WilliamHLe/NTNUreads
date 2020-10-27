@@ -36,6 +36,9 @@ const Results = () => {
 
     //Her prøver jeg å få tak i søkeresultat på de bestemte filterne for testing. Hva skal vi evt. gjøre her dersom vi ikke har filter? Ny query hver gang?
     useEffect(()=>{
+
+        console.log(filterAuthors)
+
         if (filterAuthors != "") {
             fetch(`http://localhost:4000/books/search/${searchText}/${filterAuthors}`)
                 .then(response => response.json())
@@ -47,13 +50,17 @@ const Results = () => {
         //history.push(`/results/${searchText}?authors=${filterAuthors}&average_rating=${filterRating}`)
         //fetch(`http://localhost:4000/books/search/${searchText}?authors=${filterAuthors}&average_rating=${filterRating}`)
         //fetch(`http://localhost:4000/books/search/${searchText}/${filterAuthors}/${filterYear}`) //DETTE FUNGERER!
-        fetch(`http://localhost:4000/books/search/${searchText}`)
-            .then(response => response.json())
-            .then((data) => {
-                setSearchResult(data)
-            })
+
+        if (filterAuthors == "") {
+            fetch(`http://localhost:4000/books/search/${searchText}`)
+                .then(response => response.json())
+                .then((data) => {
+                    setSearchResult(data)
+                })
+        }
 
     }, [searchText, filterAuthors])
+
 
     const handleChangeAuthors = (ct:any) => {
         setFilterAuthors(ct)
