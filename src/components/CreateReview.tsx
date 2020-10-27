@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Button, Form, FormControl} from "react-bootstrap";
 
 const CreateReview = (props:any) => {
     const book = props.book;
@@ -36,18 +37,18 @@ const CreateReview = (props:any) => {
 
     return(
         <div>
-            <form onSubmit={onFormSubmit}>
+            <Form onSubmit={onFormSubmit}>
+                <FormControl value={name} onChange={(e) => {setName(e.target.value)}} aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
                 <input type="text" value={name} onChange={(e) => {setName(e.target.value)}} />
-                <div>
                     <input type="radio" value="1" name="gender" onChange={onChangeRadio} /> 1
                     <input type="radio" value="2" name="gender" onChange={onChangeRadio} /> 2
                     <input type="radio" value="3" name="gender" onChange={onChangeRadio} /> 3
                     <input type="radio" value="4" name="gender" onChange={onChangeRadio} /> 4
                     <input type="radio" value="5" name="gender" onChange={onChangeRadio} /> 5
-                </div>
+                <FormControl value={review} onChange={(e) => {setReview(e.target.value)}} as="textarea" aria-label="With textarea" />
                 <textarea value={review} onChange={(e) => {setReview(e.target.value)}}></textarea>
-                <button type="submit">Legg til</button>
-            </form>
+                <Button type="submit">Legg til</Button>
+            </Form>
         </div>
     )
 }
