@@ -15,7 +15,7 @@ const Detailed = () => {
                 setBook(data)
                 console.log(book);
             })
-    },[id])
+    },[id, book])
 
 
     return (

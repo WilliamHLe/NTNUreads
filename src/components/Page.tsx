@@ -8,7 +8,7 @@ const Page = (props:any) => {
 
     useEffect(() => {
         setCountRes(props.countRes)
-    })
+    }, [setCountRes, props.countRes])
 
     const prevPage = () => {
         if (pagination > 1) {
@@ -33,7 +33,7 @@ const Page = (props:any) => {
                 <Pagination.Next onClick={nextPage}/>
             </Pagination>
             <p>Viser: {countRes} resultater</p>
-            <p>Side: {pagination} av {Math.round(countRes/10 + 1)}</p>
+            <p>Side: {pagination} av {Math.floor(countRes/10 + 1)}</p>
         </div>
     )
 }

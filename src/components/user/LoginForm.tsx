@@ -4,7 +4,7 @@ import {useHistory} from "react-router-dom";
 const LoginForm = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [content, setContent] = useState([""])
+    //const [content, setContent] = useState([""])
     const history = useHistory();
 
     if(sessionStorage.getItem("user")) {

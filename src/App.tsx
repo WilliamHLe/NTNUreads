@@ -5,10 +5,10 @@ import {Route, Switch} from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Results from "./pages/Results";
-import CreateReview from "./components/CreateReview";
+//import CreateReview from "./components/CreateReview";
 import LoginForm from "./components/user/LoginForm";
 import Detailed from "./pages/Detailed";
-import Page from "./components/Page";
+//import Page from "./components/Page";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
             {/*<Route path='/results' component={Results}/>*/}
             <Route path="/results/:searchText"  component={Results} />
         </Switch>
-        <CreateReview />
+        {/*<CreateReview />*/}
     </div>
   );
 }
