@@ -62,7 +62,7 @@ const GetFavorite = (props:any) => {
         return (
             <div>
                 <Form onSubmit={handleRemoveFavoriteSubmit}>
-                    <Button variant="primary" type="submit">Fjern favoritt</Button>
+                    <Button variant="danger" type="submit">Fjern favoritt</Button>
                 </Form>
             </div>
         )

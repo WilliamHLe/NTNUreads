@@ -49,6 +49,7 @@ const Detailed = () => {
                     <th>Bruker</th>
                     <th>Score</th>
                     <th>Review</th>
+                    <th>Dato lagt til</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -57,6 +58,7 @@ const Detailed = () => {
                        <td>{item.name}</td>
                        <td>{item.rating}</td>
                        <td>{item.review}</td>
+                       <td>{item.createdAt}</td>
                    </tr>
                 )}
                 </tbody>
