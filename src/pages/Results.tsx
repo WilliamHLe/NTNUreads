@@ -4,7 +4,6 @@ import {Container, Row, Col, Button, Table} from 'react-bootstrap';
 import Sidebar from "../components/filter/Sidebar";
 import {useHistory} from "react-router-dom";
 
-import "./Results.css"
 import Page from "../components/Page";
 import Sorting from "../components/Sorting";
 
@@ -68,7 +67,7 @@ const Results = () => {
     const show = showFilters ? "show" : "" ;
 
     return (
-        <div className="results-wrapper">
+        <div className="page-wrapper">
             <Container fluid>
                 <Row>
                     {/*This column is hidden at screens wider than md*/}

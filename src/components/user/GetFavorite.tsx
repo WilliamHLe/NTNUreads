@@ -35,6 +35,7 @@ const GetFavorite = (props:any) => {
         })
             .then( (response) => {
                 console.log("Success")
+                alert("Favoritt lagt til!")
             });
     }
 
@@ -55,6 +56,7 @@ const GetFavorite = (props:any) => {
         })
             .then( (response) => {
                 console.log("Success")
+                alert("Favoritt fjernet!")
             });
     }
 

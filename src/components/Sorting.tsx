@@ -16,7 +16,7 @@ const Sorting = (props:any) => {
                     <option value={""}>Relevant</option>
                     <option value="authors">Forfatter A-Z</option>
                     <option value="title">Tittel A-Z</option>
-                    <option value="average_rating">Vurdering høy-lav</option>
+                    <option value="average_rating">Vurdering lav-høy</option>
                 </Form.Control>
             </Form.Group>
         </div>

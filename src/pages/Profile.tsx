@@ -12,7 +12,7 @@ const Profile = () => {
         console.log(sessionStorage.getItem("user"))
         return <UserPage />
     } else {
-        history.push("/");
+        history.push("/login");
         return <div></div>
     }
 }
