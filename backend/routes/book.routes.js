@@ -16,6 +16,18 @@ router.route('/search/:search').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+// Used to return the count of the result with filter
+router.route('/search/:search/:rating').get((req, res) => {
+    const rating = parseInt(req.params.rating)
+    Book.find({$text: {$search: `\"${req.params.search}\"`},
+        average_rating: {$gte: rating, $lte: rating+0.99}
+
+    })
+        .count()
+        .then(books => res.json(books))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 // Skip and limit are used for pagination
 router.route('/search/:search/:skip').get((req, res) => {
     Book.find({$text: {$search: `\"${req.params.search}\"`}})
@@ -24,6 +36,8 @@ router.route('/search/:search/:skip').get((req, res) => {
         .then(books => res.json(books))
         .catch(err => res.status(400).json('Error: ' + err));
 });
+
+// Filter rating
 router.route('/search/:search/:skip/:sort/:rating').get((req, res) => {
     const sortt = req.params.sort
     const rating = parseInt(req.params.rating)
@@ -49,28 +63,6 @@ router.route('/search/:search/:skip/:sort').get((req, res) => {
         .then(books => res.json(books))
         .catch(err => res.status(400).json('Error: ' + err));
 });
-
-/*router.route('/search/:search/:skip/:sort/:rating').get((req, res) => {
-    const sortt = req.params.sort
-    const rating = parseInt(req.params.rating)
-
-    Book.find({$text: {$search: `\"${req.params.search}\"`},
-
-        //authors: {$in:randomAuth}, average_rating: {$gte: 4.42, $lte: 4.56}                              //for testing
-        //authors: {$in:filterAuthors}, average_rating: {$gte: filterRating[0], $lte: filterRating[1]}     //for list parameters
-
-        //authors: filterAuthors, average_rating: {$gte: filterRating}                                     //for single value parameters
-
-        average_rating: {$gte: rating, $lte: rating+0.99}
-
-    })
-        .sort(sortt)
-        .skip(parseInt(req.params.skip))
-        .limit(10)
-        .then(books => res.json(books))
-        .catch(err => res.status(400).json('Error: ' + err));
-});*/
-
 
 
 router.route('/add').post((req, res) => {

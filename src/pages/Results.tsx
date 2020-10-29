@@ -19,17 +19,26 @@ const Results = () => {
     const [filter, setFilter] = useState<any>("")
 
     useEffect(() => {
-        console.log(filter)
+        console.log(countRes)
     }, [filter])
 
-    useEffect(()=>{
+  /*  useEffect(()=>{
         fetch(`http://localhost:4000/books/search/${searchText}`)
             .then(response => response.json())
             .then((data) => {
                 setCountRes(data)
             })
 
-    }, [countRes])
+    }, [countRes])*/
+
+    useEffect(()=>{
+        fetch(`http://localhost:4000/books/search/${searchText}/${filter}`)
+            .then(response => response.json())
+            .then((data) => {
+                setCountRes(data)
+            })
+
+    }, [filter] [countRes])
 
 
     useEffect(()=>{
