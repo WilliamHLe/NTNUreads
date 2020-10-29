@@ -9,7 +9,7 @@ import Sorting from "../components/Sorting";
 
 
 const Results = () => {
-    //her kan vi ha search component for å initialisere nytt søk, og også inkludere komponent for
+    //her kan vi ha theme component for å initialisere nytt søk, og også inkludere komponent for
     //filtrering og sortering
     const { searchText } = useParams()
     const [searchResult, setSearchResult] = useState<any[]>([])

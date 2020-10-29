@@ -2,6 +2,8 @@ import React from "react";
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Search from "./components/search/Search";
+import ThemeSwitch from "./components/theme/ThemeSwitch";
+
 
 
 const Navigation = () => {
@@ -18,6 +20,7 @@ const Navigation = () => {
                         <Nav.Link as={Link} to="/">Hjem</Nav.Link>
                         <Nav.Link as={Link} to="/profile">Profil</Nav.Link>
                         <Nav.Link as={Link} to="/login">Logg inn/ut</Nav.Link>
+                        {/*<ThemeSwitch/>*/}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
