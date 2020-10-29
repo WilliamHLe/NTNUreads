@@ -33,6 +33,11 @@ const GetFavorite = (props:any) => {
                 book: book
             })
         })
+            .then(response => response.json())
+            .then((data) => {
+                console.log(data);
+                setResult(data)
+            })
             .then( (response) => {
                 console.log("Success")
                 alert("Favoritt lagt til!")
@@ -54,6 +59,11 @@ const GetFavorite = (props:any) => {
                 book: book
             })
         })
+            .then(response => response.json())
+            .then((data) => {
+                console.log(data);
+                setResult(data)
+            })
             .then( (response) => {
                 console.log("Success")
                 alert("Favoritt fjernet!")
@@ -62,17 +72,17 @@ const GetFavorite = (props:any) => {
 
     if(Result != null) {
         return (
-            <div>
+            <div id="favoriteDiv">
                 <Form onSubmit={handleRemoveFavoriteSubmit}>
-                    <Button variant="danger" type="submit">Fjern favoritt</Button>
+                    <Button id="favoriteButton" variant="danger" type="submit">Fjern favoritt</Button>
                 </Form>
             </div>
         )
     } else {
         return (
-            <div>
+            <div id="favoriteDiv">
                 <Form onSubmit={handleAddFavoriteSubmit}>
-                    <Button variant="primary" type="submit">Legg til favoritt</Button>
+                    <Button id="favoriteButton" variant="primary" type="submit">Legg til favoritt</Button>
                 </Form>
             </div>
         )

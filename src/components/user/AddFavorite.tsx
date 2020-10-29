@@ -10,7 +10,7 @@ const AddFavorite = (props:any) => {
         return <GetFavorite book={book} />
     } else {
         return (
-            <div>
+            <div id="favoriteDiv">
                 You are not logged in
             </div>
         )

@@ -17,7 +17,7 @@ function Home() {
                     <p>
                         Her kan du søke etter bøker, lagre dem som favoritter - og til og med skrive anmeldelser!
                     </p>
-                    <Search/>
+                    <Search />
                     <PopularSearches/>
                 </Container>
             </Jumbotron>

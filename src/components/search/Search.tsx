@@ -44,7 +44,7 @@ const Search = () => {
     return (
         <div>
             <Form inline onSubmit={handleSearchSubmit}>
-                <FormControl type="text" placeholder="Tittel, forfatter eller ISBN" value={searchText} onChange={event => {setSearchText(event.target.value)}} className="col" />
+                <FormControl id="search" type="text" placeholder="Tittel, forfatter eller ISBN" value={searchText} onChange={event => {setSearchText(event.target.value)}} className="col" />
                 <Button variant="primary" type="submit">Søk</Button>
             </Form>
         </div>
