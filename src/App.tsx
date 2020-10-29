@@ -22,7 +22,6 @@ function App() {
             {/*<Route path='/results' component={Results}/>*/}
             <Route path="/results/:searchText"  component={Results} />
         </Switch>
-        <CreateReview />
     </div>
   );
 }

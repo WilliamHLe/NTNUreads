@@ -1,8 +1,12 @@
 import React, {useState} from "react";
+import {Button, Form, FormControl, InputGroup} from "react-bootstrap";
+import "./CreateReview.css"
 
-const CreateReview = () => {
+const CreateReview = (props:any) => {
+    const book = props.book;
+
     const [name, setName] = useState("wdaa")
-    const [rating, setRating] = useState(0)
+    const [rating, setRating]    = useState(0)
     const [review, setReview] = useState("")
 
     const onFormSubmit = (event:any) => {
@@ -18,7 +22,8 @@ const CreateReview = () => {
             body: JSON.stringify({
                 name: name,
                 rating: rating,
-                review: review
+                review: review,
+                book: book
             })
         })
             .then( (response) => {
@@ -32,19 +37,29 @@ const CreateReview = () => {
     }
 
     return(
-        <div>
-            <form onSubmit={onFormSubmit}>
-                <input type="text" value={name} onChange={(e) => {setName(e.target.value)}} />
-                <div>
-                    <input type="radio" value="1" name="gender" onChange={onChangeRadio} /> 1
-                    <input type="radio" value="2" name="gender" onChange={onChangeRadio} /> 2
-                    <input type="radio" value="3" name="gender" onChange={onChangeRadio} /> 3
-                    <input type="radio" value="4" name="gender" onChange={onChangeRadio} /> 4
-                    <input type="radio" value="5" name="gender" onChange={onChangeRadio} /> 5
+        <div className="reviewForm">
+            <Form onSubmit={onFormSubmit}>
+                <InputGroup size="sm" className="mb-3">
+                    <InputGroup.Prepend>
+                        <InputGroup.Text id="inputGroup-sizing-sm">Navn</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl value={name} onChange={(e) => {setName(e.target.value)}} aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                </InputGroup>
+                <div key={`inline-${'radio'}`} className="mb-3">
+                    <Form.Check inline label="1" type='radio' name="gender" value="1" onChange={onChangeRadio}/>
+                    <Form.Check inline label="2" type='radio' name="gender" value="2" onChange={onChangeRadio}/>
+                    <Form.Check inline label="3" type='radio' name="gender" value="3" onChange={onChangeRadio}/>
+                    <Form.Check inline label="4" type='radio' name="gender" value="4" onChange={onChangeRadio}/>
+                    <Form.Check inline label="5" type='radio' name="gender" value="5" onChange={onChangeRadio}/>
                 </div>
-                <textarea value={review} onChange={(e) => {setReview(e.target.value)}}></textarea>
-                <button type="submit">Legg til</button>
-            </form>
+                <InputGroup>
+                    <InputGroup.Prepend>
+                        <InputGroup.Text id="textarea">Anmeldelse</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl value={review} onChange={(e) => {setReview(e.target.value)}} as="textarea" aria-label="With textarea" />
+                </InputGroup>
+                <Button type="submit">Legg til</Button>
+            </Form>
         </div>
     )
 }
