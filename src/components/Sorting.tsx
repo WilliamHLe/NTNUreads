@@ -13,9 +13,10 @@ const Sorting = (props:any) => {
             <div>Sorter etter:</div>
             <Form.Group controlId={"FormLanguage"}>
                 <Form.Control onChange={handleChange} className="col-10" as="select" custom>
-                    <option value="authors">Forfatter</option>
-                    <option value="title">Tittel</option>
-                    <option value="average_rating">Vurdering</option>
+                    <option value={""}>Relevant</option>
+                    <option value="authors">Forfatter A-Z</option>
+                    <option value="title">Tittel A-Z</option>
+                    <option value="average_rating">Vurdering lav-høy</option>
                 </Form.Control>
             </Form.Group>
         </div>

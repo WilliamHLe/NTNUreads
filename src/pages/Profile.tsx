@@ -1,18 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {useHistory} from "react-router-dom"
 import UserPage from "../components/user/UserPage";
-import {Table} from "react-bootstrap";
+//import {Table} from "react-bootstrap";
 
 const Profile = () => {
 
     const history = useHistory();
-    const [searchResult, setSearchResult] = useState<any[]>([])
+    //const [searchResult, setSearchResult] = useState<any[]>([])
 
     if(sessionStorage.getItem("user")) {
         console.log(sessionStorage.getItem("user"))
         return <UserPage />
     } else {
-        history.push("/");
+        history.push("/login");
         return <div></div>
     }
 }

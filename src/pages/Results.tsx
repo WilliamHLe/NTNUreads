@@ -3,9 +3,7 @@ import { useParams } from "react-router-dom";
 import {Container, Row, Col, Button, Table} from 'react-bootstrap';
 import Sidebar from "../components/filter/Sidebar";
 import {useHistory} from "react-router-dom";
-import { Link } from 'react-router-dom';
 
-import "./Results.css"
 import Page from "../components/Page";
 import Sorting from "../components/Sorting";
 
@@ -18,7 +16,7 @@ const Results = () => {
     const [count, setCount] = useState(0)
     const [countRes, setCountRes] = useState(0)
     const [sortBy, setSortBy] = useState<any>("")
-    const [bookId,setBookId] = useState<any>()
+    //const [bookId,setBookId] = useState<any>()
     const history = useHistory();
 
     useEffect(() => {
@@ -32,7 +30,7 @@ const Results = () => {
                 setCountRes(data)
             })
 
-    }, [countRes])
+    }, [searchText, countRes])
 
 
     useEffect(()=>{
@@ -42,7 +40,7 @@ const Results = () => {
                 setSearchResult(data)
             })
 
-    }, [searchText] [sortBy] )
+    }, [searchText, count, sortBy] )
 
 
     const handlePagination = (ct:any) => {
@@ -69,14 +67,15 @@ const Results = () => {
     const show = showFilters ? "show" : "" ;
 
     return (
-        <div className="results-wrapper">
+        <div className="page-wrapper">
             <Container fluid>
                 <Row>
                     {/*This column is hidden at screens wider than md*/}
                     <Col md={3} className={"d-md-none"}>
-                        <Button className="btn-group-toggle" type="button" variant={"primary"} onClick={ toggleFilters }>
+                        <Button className="btn-group-toggle" type="button" variant={"primary"} onClick={ toggleFilters } block>
                             Filtrer
                         </Button>
+                        <br/>
                         <div className={"collapse" + show}>
                             <Sidebar/>
                         </div>
@@ -88,24 +87,24 @@ const Results = () => {
                     <Col  md={9} className="page-content-wrapper">
                         <h5>Dette er resultatene fra søket: {searchText}</h5>
                         <Sorting chan={handleSort} />
-                        <Table striped bordered hover>
+                        <Table striped bordered hover  style={{tableLayout: "auto"}}>
                             <thead>
                             <tr>
-                                <th>#ID</th>
+                                <th>ISBN</th>
                                 <th>Forfatter</th>
                                 <th>Tittel</th>
                                 <th>Vurdering</th>
-                                <th></th>
+                                <th>Detaljer</th>
                             </tr>
                             </thead>
                             <tbody>
                             {searchResult.map(item =>
                                 <tr>
-                                    <td>{item.bookID}</td>
+                                    <td>{item.isbn}</td>
                                     <td>{item.authors}</td>
                                     <td>{item.title}</td>
                                     <td>{item.average_rating}</td>
-                                    <td onClick={() => toDetails(item._id)}>Detajer</td>
+                                    <td><Button onClick={() => toDetails(item._id)}>Detaljer</Button></td>
                                 </tr>
                             )}
 

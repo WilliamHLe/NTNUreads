@@ -15,7 +15,7 @@ const PopularSearches = () => {
             <div style={{marginTop:"2em"}} className={"mb-4"}>
                 <h4>Populære søk:</h4>
                 <Button size="sm" variant="primary" type="submit" onClick={() => history.push("/results/Harry%20Potter")}>Harry Potter</Button>{' '}
-                <Button size="sm" variant="primary" type="submit" onClick={() => history.push("/results/J.R.R%20Tolkien")}>J.R.R Tolkien</Button>{' '}
+                <Button size="sm" variant="primary" type="submit" onClick={() => history.push("/results/J.R.R.%20Tolkien")}>J.R.R. Tolkien</Button>{' '}
                 <Button size="sm" variant="primary" type="submit" onClick={() => history.push("/results/Oscar%20Wilde")}>Oscar Wilde</Button>{' '}
                 <Button size="sm" variant="primary" type="submit" onClick={() => history.push("/results/Jane%20Austen")}>Jane Austen</Button>
             </div>

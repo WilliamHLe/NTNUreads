@@ -1,4 +1,4 @@
-import {Button, Form, FormControl} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 
 const GetFavorite = (props:any) => {
@@ -15,7 +15,7 @@ const GetFavorite = (props:any) => {
                 console.log(data);
                 setResult(data)
             })
-    },[])
+    },[book])
 
 
     const handleAddFavoriteSubmit = (event:any) => {
@@ -35,6 +35,7 @@ const GetFavorite = (props:any) => {
         })
             .then( (response) => {
                 console.log("Success")
+                alert("Favoritt lagt til!")
             });
     }
 
@@ -55,6 +56,7 @@ const GetFavorite = (props:any) => {
         })
             .then( (response) => {
                 console.log("Success")
+                alert("Favoritt fjernet!")
             });
     }
 
