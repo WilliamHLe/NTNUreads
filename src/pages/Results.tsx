@@ -15,12 +15,12 @@ const Results = () => {
     const [searchResult, setSearchResult] = useState<any[]>([])
     const [count, setCount] = useState(0)
     const [countRes, setCountRes] = useState(0)
-    const [sortBy, setSortBy] = useState<any>("")
-    const [filter, setFilter] = useState<any>([""])
+    const [sortBy, setSortBy] = useState<any>(null)
+    const [filter, setFilter] = useState<any>("")
 
     useEffect(() => {
-        console.log(sortBy)
-    }, [sortBy])
+        console.log(filter)
+    }, [filter])
 
     useEffect(()=>{
         fetch(`http://localhost:4000/books/search/${searchText}`)
@@ -33,26 +33,29 @@ const Results = () => {
 
 
     useEffect(()=>{
-        fetch(`http://localhost:4000/books/search/${searchText}/${count}/${sortBy}`)
+        fetch(`http://localhost:4000/books/search/${searchText}/${count}/${sortBy}/${filter}`)
             .then(response => response.json())
             .then((data) => {
                 setSearchResult(data)
             })
 
-    }, [searchText] [sortBy] )
+    }, [searchText] [filter])
+
+
+
 
 
     const handlePagination = (ct:any) => {
         setCount(ct)
-        console.log(sortBy)
     }
 
     const handleSort = (ct:any) => {
         setSortBy(ct)
     }
+
     const handleFilter = (ct:any) => {
-        setFilter([ct])
-        console.log(filter)
+        setFilter(ct)
+
     }
 
 

@@ -7,25 +7,21 @@ interface SideBarProps {
 }
 const Sidebar = ({chang}: SideBarProps) => {
 
-    const handleChang = (e:any) => {
+    const handleChange = (e:any) => {
         chang(e.target.value)
     }
+
     return (
         <div>
             <Form>
-                <Form >
-                    <input type="checkbox" value="1" onChange={handleChang}/>
-                    <input type="checkbox" value="3" onChange={handleChang}/>
-
-                </Form>
                 <h5>Gjennomsnittlig rating</h5>
                 {/*HER MÅ 1 STJERNE VÆRE ALLE BØKER FRA 0-1.5, 2 STJERNER FRA 1.5-2.5 OSV?*/}
-                <Form.Group controlId={"FormRating"}>
-                    <Form.Check type="checkbox" label={<ShowRating star1={"filledStar"} star2={"emptyStar"} star3={"emptyStar"} star4={"emptyStar"} star5={"emptyStar"}/>}/>
-                    <Form.Check type="checkbox" label={<ShowRating star1={"filledStar"} star2={"filledStar"} star3={"emptyStar"} star4={"emptyStar"} star5={"emptyStar"}/>}/>
-                    <Form.Check type="checkbox" label={<ShowRating star1={"filledStar"} star2={"filledStar"} star3={"filledStar"} star4={"emptyStar"} star5={"emptyStar"}/>}/>
-                    <Form.Check type="checkbox" label={<ShowRating star1={"filledStar"} star2={"filledStar"} star3={"filledStar"} star4={"filledStar"} star5={"emptyStar"}/>}/>
-                    <Form.Check type="checkbox" label={<ShowRating star1={"filledStar"} star2={"filledStar"} star3={"filledStar"} star4={"filledStar"} star5={"filledStar"}/>}/>
+                <Form.Group controlId={"FormRating"} onChange={handleChange}>
+                    <Form.Check type="radio" name="rating" value="1" label={<ShowRating star1={"filledStar"} star2={"emptyStar"} star3={"emptyStar"} star4={"emptyStar"} star5={"emptyStar"}/>}/>
+                    <Form.Check type="radio" name="rating" value="2" label={<ShowRating star1={"filledStar"} star2={"filledStar"} star3={"emptyStar"} star4={"emptyStar"} star5={"emptyStar"}/>}/>
+                    <Form.Check type="radio" name="rating" value="3" label={<ShowRating star1={"filledStar"} star2={"filledStar"} star3={"filledStar"} star4={"emptyStar"} star5={"emptyStar"}/>}/>
+                    <Form.Check type="radio" name="rating" value="4" label={<ShowRating star1={"filledStar"} star2={"filledStar"} star3={"filledStar"} star4={"filledStar"} star5={"emptyStar"}/>}/>
+                    <Form.Check type="radio" name="rating" value="5" label={<ShowRating star1={"filledStar"} star2={"filledStar"} star3={"filledStar"} star4={"filledStar"} star5={"filledStar"}/>}/>
                 </Form.Group>
 
 
