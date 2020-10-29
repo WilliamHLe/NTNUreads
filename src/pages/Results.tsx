@@ -15,41 +15,58 @@ const Results = () => {
     const [searchResult, setSearchResult] = useState<any[]>([])
     const [count, setCount] = useState(0)
     const [countRes, setCountRes] = useState(0)
-    const [sortBy, setSortBy] = useState<any>("")
+    const [sortBy, setSortBy] = useState<any>(null)
+    const [filter, setFilter] = useState<any>("")
     //const [bookId,setBookId] = useState<any>()
     const history = useHistory();
 
     useEffect(() => {
-        console.log(sortBy)
-    }, [sortBy])
+        console.log(countRes)
+    }, [filter])
 
-    useEffect(()=>{
+  /*  useEffect(()=>{
         fetch(`http://localhost:4000/books/search/${searchText}`)
             .then(response => response.json())
             .then((data) => {
                 setCountRes(data)
             })
 
-    }, [searchText, countRes])
+    }, [countRes])*/
+
+    useEffect(()=>{
+        fetch(`http://localhost:4000/books/search/${searchText}/${filter}`)
+            .then(response => response.json())
+            .then((data) => {
+                setCountRes(data)
+            })
+
+    }, [filter] [countRes])
 
 
     useEffect(()=>{
-        fetch(`http://localhost:4000/books/search/${searchText}/${count}/${sortBy}`)
+        fetch(`http://localhost:4000/books/search/${searchText}/${count}/${sortBy}/${filter}`)
             .then(response => response.json())
             .then((data) => {
                 setSearchResult(data)
             })
 
-    }, [searchText, count, sortBy] )
+    }, [searchText] [filter])
+
+
+
 
 
     const handlePagination = (ct:any) => {
         setCount(ct)
-        console.log(sortBy)
     }
 
     const handleSort = (ct:any) => {
         setSortBy(ct)
+    }
+
+    const handleFilter = (ct:any) => {
+        setFilter(ct)
+
     }
 
 
@@ -77,12 +94,12 @@ const Results = () => {
                         </Button>
                         <br/>
                         <div className={"collapse" + show}>
-                            <Sidebar/>
+                            <Sidebar chang={handleFilter}/>
                         </div>
                     </Col>
                     {/*This column is hidden at screens smaller than md*/}
                     <Col md={3} className={"d-none d-md-block"}>
-                        <Sidebar/>
+                        <Sidebar chang={handleFilter}/>
                     </Col>
                     <Col  md={9} className="page-content-wrapper">
                         <h5>Dette er resultatene fra søket: {searchText}</h5>
