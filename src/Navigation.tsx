@@ -9,7 +9,7 @@ const Navigation = () => {
     // if logged in = false -> sett logintekst til "Logg inn"
     return (
         <div>
-            <Navbar bg="light" expand="md" sticky="top">
+            <Navbar bg="light" expand="md" fixed="top">
                 <Navbar.Brand as={Link} to="/">NTNUreads</Navbar.Brand>
                 <Search/>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

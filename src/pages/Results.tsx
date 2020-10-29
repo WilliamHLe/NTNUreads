@@ -87,7 +87,7 @@ const Results = () => {
                     <Col  md={9} className="page-content-wrapper">
                         <h5>Dette er resultatene fra søket: {searchText}</h5>
                         <Sorting chan={handleSort} />
-                        <Table striped bordered hover  style={{tableLayout: "auto"}}>
+                        <Table striped bordered hover responsive style={{tableLayout: "auto"}}>
                             <thead>
                             <tr>
                                 <th>ISBN</th>

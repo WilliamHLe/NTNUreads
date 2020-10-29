@@ -28,7 +28,7 @@ const UserPage = () => {
             <h2>Hei, {user.username}!</h2>
             <p>Her har du en oversikt over dine favorittbøker. Gå til detaljer for mer informasjon eller for å fjerne en favoritt.</p>
             <br/>
-            <Table striped bordered hover  style={{tableLayout: "auto"}}>
+            <Table striped bordered hover responsive style={{tableLayout: "auto"}}>
                 <thead>
                 <tr>
                     <th>ISBN</th>

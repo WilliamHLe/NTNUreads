@@ -30,6 +30,7 @@ const Detailed = () => {
                         <ListGroup.Item><b>ISBN/ISBN13:</b> {item.isbn} / {item.isbn13}</ListGroup.Item>
                         <ListGroup.Item><b>Utgivelsesdato:</b> {item.publication_date.substring(0,10)}</ListGroup.Item>
                         <ListGroup.Item><b>Utgiver:</b> {item.publisher}</ListGroup.Item>
+                        <ListGroup.Item><b>Språk:</b> {item.language_code}</ListGroup.Item>
                         <ListGroup.Item><b>Vurdering:</b> {item.average_rating} av 5 ({item.ratings_count} vurderinger totalt)</ListGroup.Item>
                     </ListGroup>
                     <br/>
