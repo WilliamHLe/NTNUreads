@@ -3,7 +3,7 @@ import {Theme} from "./models/Theme";
 import {Action, Reducer} from "redux";
 
 const defaultState: Theme = {
-    theme: "LIGHT"
+    theme: "light"
 }
 
 export const themeReducer: Reducer<Theme, Action> = (state = defaultState, action: ThemeActionTypes) => {
@@ -16,10 +16,10 @@ export const themeReducer: Reducer<Theme, Action> = (state = defaultState, actio
 
     switch (action.type) {
         case LIGHT_THEME:
-            nextState.theme = "DARK";
+            nextState.theme = "dark";
             return nextState
         case DARK_THEME:
-            nextState.theme = "LIGHT";
+            nextState.theme = "light";
             return nextState
         default:
             return state

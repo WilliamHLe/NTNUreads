@@ -1,10 +1,5 @@
 import React from 'react';
 
-import {connect} from "react-redux";
-import {Dispatch} from "redux";
-import {AppState} from "./store/rootStore";
-import {lightTheme, darkTheme} from "./store/theme/ThemeAction";
-
 import './App.css';
 import Navigation from "./Navigation";
 import {Route, Switch} from "react-router-dom";
@@ -14,24 +9,7 @@ import Results from "./pages/Results";
 //import CreateReview from "./components/CreateReview";
 import LoginForm from "./components/user/LoginForm";
 import Detailed from "./pages/Detailed";
-//import Page from "./components/Page";
 
-/*
-interface AppProps {
-    light: () => void;
-    dark: () => void;
-}
-
-const mapStateToProps = (state: AppState) => ({
-    theme: state.themeReducer.theme
-})
-
-const mapDispatchToProps = (dispatch: Dispatch): AppProps => ({
-    light: () => dispatch(lightTheme()),
-    dark: () => dispatch(darkTheme())
-})
-
- */
 
 
 function App() {
@@ -51,5 +29,4 @@ function App() {
   );
 }
 
-//export default connect(mapStateToProps, mapDispatchToProps)(App);
 export default App;
