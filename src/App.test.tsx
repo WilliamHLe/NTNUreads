@@ -1,5 +1,4 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import App from './App';
 import { shallow, mount } from "enzyme";
 import { MemoryRouter } from 'react-router-dom';
@@ -12,7 +11,7 @@ it("renders without crashing", () => {
 
 
 // Testing the router
-test('valid path should the main page', () => {
+test('valid path should shows main page', () => {
   const wrapper = mount(
       <MemoryRouter initialEntries={[ '/' ]}>
         <App/>
@@ -20,3 +19,4 @@ test('valid path should the main page', () => {
   );
   expect(wrapper.find(Navigation)).toHaveLength(1);
 });
+

@@ -1,9 +1,6 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import { shallow, mount } from "enzyme";
-import {Button, Form, FormControl} from "react-bootstrap";
 import Sorting from "../Sorting";
-import Search from "../search/Search";
 
 const props = jest.fn()
 

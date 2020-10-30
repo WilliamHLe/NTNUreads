@@ -1,5 +1,4 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import { shallow, mount } from "enzyme";
 import Search from "../search/Search";
 import {Button, Form, FormControl} from "react-bootstrap";
