@@ -28,7 +28,7 @@ describe('Favorite', () => {
             .get("form")
             .get("input[type='username'")
             .type("willi1")
-            .get("input[type='checkbox']").check()
+            .get("input[type='checkbox']").last().check()
             .get("input[type='password'")
             .type("willi123")
             .type("{enter}")
