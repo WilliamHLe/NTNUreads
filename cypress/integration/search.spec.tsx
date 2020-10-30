@@ -16,7 +16,7 @@ describe('Search', () => {
             .url().should('eq',"http://localhost:3000/results/"+search.replace(/\s/g,'%20'))
     })
     it('correctly return 0 list', () => {
-        const search = "sdjkfnsdjhfbshjefghjsegfhusegfdyu"
+        const search = "s,ldjfnskjdgfsdhgoisdhgioerhjgr"
         cy.get('#search')
             .type(search)
             .type("{enter}")
@@ -42,5 +42,28 @@ describe('Search', () => {
             .each(($el,index) => {
                 cy.wrap($el).should("have.text",buttons[index])
             })
+    })
+    it('can filter by rating',() => {
+        const search = "Harry Potter"
+        cy.get('#search')
+            .type(search)
+            .type("{enter}")
+            .get("table")
+            .wait(500)
+            .get("div").get("form").children("h5").next().last().children().children("input").check("3")
+            .get("tr").children("td").first()
+            .should("have.text","0826452329")
+    })
+    it('can sort by author',() => {
+        const search = "Harry Potter"
+        cy.get('#search')
+            .type(search)
+            .type("{enter}")
+            .get("table")
+            .wait(500)
+            .get("select")
+            .select("Forfatter A-Z")
+            .get("tr").children("td").first()
+            .should("have.text","1569755833")
     })
 })

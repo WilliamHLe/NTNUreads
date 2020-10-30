@@ -12,6 +12,7 @@ const Detailed = () => {
     const [book, setBook] = useState<any[]>([])
     const [review, setReview] = useState<any[]>([])
 
+    //Gets info about the selected book and all the reviews for the book
     useEffect(()=>{
         fetch(`http://localhost:4000/books/${id}`)
             .then(response => response.json())

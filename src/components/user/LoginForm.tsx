@@ -9,6 +9,7 @@ const LoginForm = () => {
     //const [content, setContent] = useState([""])
     const history = useHistory();
 
+    //If the user is already logged in, log out and redirect to the home page
     if(sessionStorage.getItem("user")) {
         sessionStorage.removeItem("user");
         alert("Du har logget ut!");
@@ -20,16 +21,19 @@ const LoginForm = () => {
     const onFormSubmit = (event:any) => {
         event.preventDefault();
 
+        //Checks if the user has entered a username and password
         if(username === "" || password === "") {
             alert("Vennligst fyll inn brukernavn og passord")
             return
         }
 
+        //Checks if the user has checked the security box
         if(!securityCheck) {
             alert("Vennligst bekreft at du er informert om usikker innlogging")
             return
         }
 
+        //Finds a user that matches the username and password
         fetch('http://localhost:4000/user/login/'+{username}.username+'/'+{password}.password+'', {
             method: "get",
             headers: {
@@ -41,9 +45,11 @@ const LoginForm = () => {
             .then(
                 (result) =>{
                     console.log(JSON.stringify(result[0]));
+                    //If no user if found, alert the user and don't log in
                     if (JSON.stringify(result[0]) === undefined) {
                         alert("ERROR: ikke gyldig bruker");
                     }
+                    //If a user is found, log in and redirect to the home page
                     else {
                         sessionStorage.setItem("user",JSON.stringify(result[0]));
                         alert("Du har logget inn!");
