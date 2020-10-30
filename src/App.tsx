@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import Navigation from "./Navigation";
+import {Route, Switch} from "react-router-dom";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import Results from "./pages/Results";
+import LoginForm from "./components/user/LoginForm";
+import Detailed from "./pages/Detailed";
+
+/**
+ * Main App component, routes are defined here
+ */
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Navigation/>
+        <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route path='/profile' component={Profile}/>
+            <Route path='/login' component={LoginForm}/>
+            <Route name="detailed" path='/book/:id' component={Detailed} />
+            <Route path="/results/:searchText"  component={Results} />
+        </Switch>
     </div>
   );
 }
