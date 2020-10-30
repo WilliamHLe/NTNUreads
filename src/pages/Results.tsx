@@ -26,7 +26,7 @@ const Results = () => {
 
     useEffect(() => {
         console.log(countRes)
-    }, [filter])
+    }, [filter, countRes])
 
   /*  useEffect(()=>{
         fetch(`http://localhost:4000/books/search/${searchText}`)
@@ -44,7 +44,7 @@ const Results = () => {
                 setCountRes(data)
             })
 
-    }, [filter] [countRes])
+    }, [filter, countRes, searchText])
 
 
     useEffect(()=>{
@@ -54,7 +54,7 @@ const Results = () => {
                 setSearchResult(data)
             })
 
-    }, [searchText] [filter])
+    }, [searchText, filter, count, sortBy])
 
 
 
