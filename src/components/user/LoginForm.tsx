@@ -72,10 +72,16 @@ const LoginForm = () => {
                 <Form.Group controlId="formBasicUsername">
                     <Form.Label>Brukernavn</Form.Label>
                     <Form.Control type="username" placeholder="Brukernavn" onChange={(e)=>setUsername(e.target.value)}/>
+                    <Form.Text className="text-muted">
+                        Tips: willi1 er et fint brukernavn
+                    </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Passord</Form.Label>
                     <Form.Control type="password" placeholder="Passord" onChange={(e)=>setPassword(e.target.value)}/>
+                    <Form.Text className="text-muted">
+                        Tips: willi123 er et fint passord
+                    </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Jeg er informert om at denne innloggingen er totalt usikker og kun til demonstrasjon." onChange={() => setSecurityCheck(!securityCheck)}/>
