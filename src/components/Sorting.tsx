@@ -1,17 +1,23 @@
 import React from "react";
 import {Form} from "react-bootstrap";
 
-const Sorting = (props:any) => {
+interface SortingProps {
+    changeSort: (ct:string) => void
+}
 
-    const handleChange = (e:any) => {
-        props.chan(e.target.value)
+/**
+ * Component for sorting the set of result from search
+ */
+const Sorting = ({changeSort}: SortingProps) => {
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        changeSort(e.target.value)
     }
-
 
     return(
         <div>
-            <div>Sorter etter:</div>
-            <Form.Group controlId={"FormLanguage"}>
+            <div className="my-3">Sorter etter:</div>
+            <Form.Group className="mb-3" controlId={"FormLanguage"}>
                 <Form.Control onChange={handleChange} className="col-10" as="select" custom>
                     <option value={""}>Relevant</option>
                     <option value="authors">Forfatter A-Z</option>

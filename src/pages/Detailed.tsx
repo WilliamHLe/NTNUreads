@@ -4,9 +4,9 @@ import {Table} from 'react-bootstrap';
 import {useParams} from "react-router-dom";
 import {ListGroup} from "react-bootstrap";
 import AddFavorite from "../components/user/AddFavorite"
-import CreateReview from "../components/CreateReview";
 import {useSelector} from "react-redux";
 import {AppState} from "../store/rootStore";
+import CreateReview from "../components/review/CreateReview";
 
 const Detailed = () => {
 

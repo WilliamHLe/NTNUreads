@@ -2,18 +2,20 @@ import {Button, Form, FormControl} from "react-bootstrap";
 import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 
+/**
+ * Component for showing a searchbar
+ * The search word will be sent to the result page for further database fetch
+ */
 const Search = () => {
-
-    const [searchText, setSearchText] = useState("")
+    const [searchText, setSearchText] = useState<string>("")
     const history = useHistory();
 
 
+    const handleSearchSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault()
 
-    const handleSearchSubmit = (event:any) => {
-        event.preventDefault()
 
         if (searchText !== "") {
-            //console.log(searchText)
             history.push(`/results/${searchText}`)
         } else {
             alert("Vennligst fyll inn søketekst!");

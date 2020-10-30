@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import {Button, Form, FormControl, InputGroup} from "react-bootstrap";
 import "./CreateReview.css"
 
+/**
+ * Adding review to database for a specific book
+ */
 const CreateReview = (props:any) => {
     const book = props.book;
 
