@@ -13,6 +13,7 @@ const UserPage = () => {
 
     const theme = useSelector((state:AppState) => state.themeReducer.theme)
 
+    //Finds all the books the user has marked as favorites
     useEffect(()=>{
         fetch("http://localhost:4000/favorite/user/"+user._id+"")
             .then(response => response.json())
@@ -22,6 +23,7 @@ const UserPage = () => {
             })
     },[user])
 
+    //Redirects to the detailed page of the book
     const toDetails = (id:any) => {
         console.log(id);
         history.push(`/book/${id}`)

@@ -16,21 +16,19 @@ const Detailed = () => {
 
     const theme = useSelector((state:AppState) => state.themeReducer.theme)
 
+    //Gets info about the selected book and all the reviews for the book
     useEffect(()=>{
         fetch(`http://localhost:4000/books/${id}`)
             .then(response => response.json())
             .then((data) => {
-                //console.log(data);
                 setBook(data)
-                //console.log(book);
             })
         fetch(`http://localhost:4000/review/${id}`)
             .then(response => response.json())
             .then((data) => {
-                console.log("sup");
                 setReview(data)
             })
-    },[id,book,review])
+    },[id])
 
 
     return (

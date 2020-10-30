@@ -25,8 +25,9 @@ router.route('/add').put((req, res) => {
             Book.findOneAndUpdate({_id: req.body.book},
                 {$push: {users: req.body.user}},
                 { new: true, useFindAndModify: false })
-                .then(books => {
-                    res.json(books);
+            User.findOne({_id: req.body.user, books:req.body.book})
+                .then(user => {
+                    res.json(user)
                 })
         })
 })
@@ -39,10 +40,12 @@ router.route('/remove').put((req, res) => {
             Book.findOneAndUpdate({_id: req.body.book},
                 {$pull: {users: req.body.user}},
                 { new: true, useFindAndModify: false })
-                .then(books => {
-                    res.json(books);
+            User.findOne({_id: req.body.user, books:req.body.book})
+                .then(user => {
+                    res.json(user)
                 })
         })
+
 })
 
 router.route('/find/:user/:book').get((req, res) => {
