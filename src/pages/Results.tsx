@@ -67,7 +67,6 @@ const Results = () => {
     }
 
     const toDetails = (id:any) => {
-        console.log(id);
         history.push(`/book/${id}`)
     }
 

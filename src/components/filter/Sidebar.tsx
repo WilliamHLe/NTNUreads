@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import ShowRating from "./ShowRating";
 import {Button, Form} from "react-bootstrap";
 
+/**
+ * Filter rating of the result set
+ */
 interface SideBarProps {
     changeFilter: (ct:string) => void
 }
