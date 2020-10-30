@@ -11,13 +11,11 @@
   padding: 100px 30px 30px 30px;
   background-color: #495057;
   color: white;
-  /*position: fixed;*/
   top: 0px;
   left: 0;
   z-index: 999;
   width: 100%;
   min-height: 100vh;
-  /*text-align: center;*/
 
 }
 

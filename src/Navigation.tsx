@@ -6,7 +6,9 @@ import ThemeSwitch from "./components/theme/ThemeSwitch";
 import {useSelector} from "react-redux";
 import {AppState} from "./store/rootStore";
 
-
+/**
+ * Navbar component, always rendered
+ */
 
 const Navigation = () => {
 

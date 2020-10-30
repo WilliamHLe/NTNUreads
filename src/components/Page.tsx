@@ -1,6 +1,10 @@
 import React, {useEffect, useState} from "react";
 import { Pagination } from "react-bootstrap";
 
+/**
+ * Component for implementing pagination
+ */
+
 const Page = (props:any) => {
     const [pagination, setPagination] = useState(1)
     const [count, setCount] = useState(0)

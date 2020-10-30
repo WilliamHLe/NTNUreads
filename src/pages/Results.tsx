@@ -86,7 +86,7 @@ const Results = () => {
                             <Sidebar changeFilter={handleFilter}/>
                         </div>
                     </Col>
-                    {/*This column is hidde n at screens smaller than md*/}
+                    {/*This column is hidden at screens smaller than md*/}
                     <Col md={3} className={"d-none d-md-block"}>
                         <Sidebar changeFilter={handleFilter}/>
                     </Col>

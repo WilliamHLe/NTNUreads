@@ -2,6 +2,10 @@ import {LIGHT_THEME, DARK_THEME, ThemeActionTypes} from "./models/actions";
 import {Theme} from "./models/Theme";
 import {Action, Reducer} from "redux";
 
+/**
+ * Theme reducer functions
+ */
+
 const defaultState: Theme = {
     theme: "light"
 }

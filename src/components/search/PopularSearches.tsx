@@ -2,16 +2,16 @@ import React from "react";
 import {useHistory} from "react-router-dom";
 import {Button} from "react-bootstrap";
 
+/**
+ * Predefined search buttons - clicking on them will result in same action as searching for the string defined on button
+ */
+
 const PopularSearches = () => {
 
     const history = useHistory();
 
-    //IDE: hvis vi får tid kan vi også ha en komponent for "nylige søk" der f.eks. de siste 5 søkene som har blitt
-    //skrevet inn i søkefeltet dukker opp som knapper som dette
-
     return (
         <div>
-            {/*Plan: ved å trykke på disse forhåndsbestemte taggene vil søkeordet bli navnet på knappen*/}
             <div style={{marginTop:"2em"}} className={"mb-4"}>
                 <h4>Populære søk:</h4>
                 <Button size="sm" variant="primary" type="submit" onClick={() => history.push("/results/Harry%20Potter")}>Harry Potter</Button>{' '}

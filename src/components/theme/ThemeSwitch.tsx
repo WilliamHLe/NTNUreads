@@ -5,7 +5,9 @@ import {AppState} from "../../store/rootStore";
 import {useDispatch, useSelector} from "react-redux";
 import {lightTheme, darkTheme} from "../../store/theme/ThemeAction";
 
-
+/**
+ * Switch for toggling theme, will update state in Redux store
+ */
 
 const ThemeSwitch = () => {
 

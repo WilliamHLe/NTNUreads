@@ -1,8 +1,6 @@
-//TODO: will combine all actions from all seperate stores
-
 import { ThemeActionTypes } from "../theme/models/actions";
 
 export type AppActions = ThemeActionTypes;
 
-//will be extended later like this:
+//would be extended like this if we had other types:
 // export type AppActions = SearchActionTypes | OtherTypes;

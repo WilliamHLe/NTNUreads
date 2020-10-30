@@ -8,8 +8,6 @@ const LoginForm = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [securityCheck, setSecurityCheck] = useState(false);
-    //LOGIN INN I REDUX ETTERHVERT? SLIK AT DEN KAN SETTES HER OG BRUKES I NAVBAR TIL Å VISE LOGG INN/UT
-    //const [loggedIn, setLoggedIn] = useState(false);
     const history = useHistory();
 
     const theme = useSelector((state:AppState) => state.themeReducer.theme)
