@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './App.css';
 import Navigation from "./Navigation";
 import {Route, Switch} from "react-router-dom";
@@ -8,7 +9,8 @@ import Results from "./pages/Results";
 //import CreateReview from "./components/CreateReview";
 import LoginForm from "./components/user/LoginForm";
 import Detailed from "./pages/Detailed";
-//import Page from "./components/Page";
+
+
 
 function App() {
   return (

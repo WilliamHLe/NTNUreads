@@ -7,8 +7,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.page-wrapper {
-  padding: 30px;
+.page-wrapper-dark {
+  padding: 100px 30px 30px 30px;
+  background-color: #495057;
+  color: white;
+
+}
+
+.page-wrapper-light {
+  padding: 100px 30px 30px 30px;
 }
 
 .code {

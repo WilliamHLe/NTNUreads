@@ -6,10 +6,12 @@ import {useHistory} from "react-router-dom";
 
 import Page from "../components/Page";
 import Sorting from "../components/Sorting";
+import {useSelector} from "react-redux";
+import {AppState} from "../store/rootStore";
 
 
 const Results = () => {
-    //her kan vi ha search component for å initialisere nytt søk, og også inkludere komponent for
+    //her kan vi ha theme component for å initialisere nytt søk, og også inkludere komponent for
     //filtrering og sortering
     const { searchText } = useParams()
     const [searchResult, setSearchResult] = useState<any[]>([])
@@ -19,6 +21,8 @@ const Results = () => {
     const [filter, setFilter] = useState<any>("")
     //const [bookId,setBookId] = useState<any>()
     const history = useHistory();
+
+    const theme = useSelector((state:AppState) => state.themeReducer.theme)
 
     useEffect(() => {
         console.log(countRes)
@@ -84,7 +88,7 @@ const Results = () => {
     const show = showFilters ? "show" : "" ;
 
     return (
-        <div className="page-wrapper">
+        <div className={"page-wrapper-"+theme}>
             <Container fluid>
                 <Row>
                     {/*This column is hidden at screens wider than md*/}
@@ -104,7 +108,7 @@ const Results = () => {
                     <Col  md={9} className="page-content-wrapper">
                         <h5>Dette er resultatene fra søket: {searchText}</h5>
                         <Sorting chan={handleSort} />
-                        <Table striped bordered hover  style={{tableLayout: "auto"}}>
+                        <Table striped bordered hover responsive variant={theme} style={{tableLayout: "auto"}}>
                             <thead>
                             <tr>
                                 <th>ISBN</th>

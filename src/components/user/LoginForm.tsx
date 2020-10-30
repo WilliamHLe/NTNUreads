@@ -1,17 +1,23 @@
 import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 import {Form, Button} from "react-bootstrap";
+import {useSelector} from "react-redux";
+import {AppState} from "../../store/rootStore";
 
 const LoginForm = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [securityCheck, setSecurityCheck] = useState(false);
-    //const [content, setContent] = useState([""])
+    //LOGIN INN I REDUX ETTERHVERT? SLIK AT DEN KAN SETTES HER OG BRUKES I NAVBAR TIL Å VISE LOGG INN/UT
+    //const [loggedIn, setLoggedIn] = useState(false);
     const history = useHistory();
+
+    const theme = useSelector((state:AppState) => state.themeReducer.theme)
 
     if(sessionStorage.getItem("user")) {
         sessionStorage.removeItem("user");
         alert("Du har logget ut!");
+        //setLoggedIn(false);
         history.push("/");
     }
 
@@ -47,6 +53,7 @@ const LoginForm = () => {
                     else {
                         sessionStorage.setItem("user",JSON.stringify(result[0]));
                         alert("Du har logget inn!");
+                        //setLoggedIn(true);
                         history.push("/");
                     }
                 }
@@ -55,7 +62,7 @@ const LoginForm = () => {
     }
 
     return (
-        <div className={"page-wrapper"}>
+        <div className={"page-wrapper-"+theme}>
 
             <Form onSubmit={onFormSubmit}>
                 <Form.Group controlId="formBasicUsername">
@@ -64,7 +71,7 @@ const LoginForm = () => {
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Passord</Form.Label>
-                    <Form.Control type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
+                    <Form.Control type="password" placeholder="Passord" onChange={(e)=>setPassword(e.target.value)}/>
                 </Form.Group>
                 <Form.Group controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Jeg er informert om at denne innloggingen er totalt usikker og kun til demonstrasjon." onChange={() => setSecurityCheck(!securityCheck)}/>

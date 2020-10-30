@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {useHistory} from "react-router-dom"
 import {Button, Table} from "react-bootstrap";
+import {useSelector} from "react-redux";
+import {AppState} from "../../store/rootStore";
 
 const UserPage = () => {
 
@@ -8,6 +10,8 @@ const UserPage = () => {
     const [searchResult, setSearchResult] = useState<any[]>([])
 
     const user = JSON.parse(sessionStorage.getItem("user") || "");
+
+    const theme = useSelector((state:AppState) => state.themeReducer.theme)
 
     useEffect(()=>{
         fetch("http://localhost:4000/favorite/user/"+user._id+"")
@@ -24,11 +28,11 @@ const UserPage = () => {
     }
 
     return (
-        <div className={"page-wrapper"}>
+        <div className={"page-wrapper-"+theme}>
             <h2>Hei, {user.username}!</h2>
             <p>Her har du en oversikt over dine favorittbøker. Gå til detaljer for mer informasjon eller for å fjerne en favoritt.</p>
             <br/>
-            <Table striped bordered hover  style={{tableLayout: "auto"}}>
+            <Table striped bordered hover responsive variant={theme} style={{tableLayout: "auto"}}>
                 <thead>
                 <tr>
                     <th>ISBN</th>
