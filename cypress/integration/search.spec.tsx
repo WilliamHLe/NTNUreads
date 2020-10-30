@@ -63,6 +63,7 @@ describe('Search', () => {
             .wait(500)
             .get("select")
             .select("Forfatter A-Z")
+            .wait(200)
             .get("tr").children("td").first()
             .should("have.text","1569755833")
     })
