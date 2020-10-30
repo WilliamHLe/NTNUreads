@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {Button, Form, FormControl, InputGroup} from "react-bootstrap";
-import "./CreateReview.css"
 
 /**
  * Adding review to database for a specific book
@@ -8,7 +7,7 @@ import "./CreateReview.css"
 const CreateReview = (props:any) => {
     const book = props.book;
 
-    const [name, setName] = useState("wdaa")
+    const [name, setName] = useState("")
     const [rating, setRating]    = useState(0)
     const [review, setReview] = useState("")
 
@@ -48,6 +47,7 @@ const CreateReview = (props:any) => {
                     </InputGroup.Prepend>
                     <FormControl value={name} onChange={(e) => {setName(e.target.value)}} aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
                 </InputGroup>
+
                 <div key={`inline-${'radio'}`} className="mb-3">
                     <Form.Check inline label="1" type='radio' name="gender" value="1" onChange={onChangeRadio}/>
                     <Form.Check inline label="2" type='radio' name="gender" value="2" onChange={onChangeRadio}/>
@@ -61,6 +61,7 @@ const CreateReview = (props:any) => {
                     </InputGroup.Prepend>
                     <FormControl value={review} onChange={(e) => {setReview(e.target.value)}} as="textarea" aria-label="With textarea" />
                 </InputGroup>
+                <br/>
                 <Button type="submit">Legg til</Button>
             </Form>
         </div>

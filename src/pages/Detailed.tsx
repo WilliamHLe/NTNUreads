@@ -47,11 +47,14 @@ const Detailed = () => {
                     </ListGroup>
                     <br/>
                     <AddFavorite book={id}/>
+                    <br/><br/>
+                    <h4>Opprett en anmeldelse: </h4>
                     <CreateReview book={item._id}/>
                 </div>
             )}
-            Anmeldelser
-            <Table striped bordered hover>
+            <br/>
+            <h4>Anmeldelser</h4>
+            <Table striped bordered hover responsive variant={theme}>
                 <thead>
                 <tr>
                     <th>Bruker</th>

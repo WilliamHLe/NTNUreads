@@ -5,8 +5,6 @@ import {AppState} from "../../store/rootStore";
 import {useDispatch, useSelector} from "react-redux";
 import {lightTheme, darkTheme} from "../../store/theme/ThemeAction";
 
-import { faSun } from '@fortawesome/free-solid-svg-icons'
-import { faMoon } from '@fortawesome/free-solid-svg-icons'
 
 
 const ThemeSwitch = () => {
@@ -26,12 +24,12 @@ const ThemeSwitch = () => {
 
 
     return (
-        <div>
+        <div style={{paddingTop: "8px"}}>
             <Form>
                 <Form.Check inline
                     type="switch"
                     id="theme-switch"
-                    label={theme}
+                    label={theme==="light" ? "🔆" : "🌙"}
                     value={theme}
                     onChange={handleChange}
                 />

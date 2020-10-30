@@ -32,7 +32,7 @@ const Results = () => {
                 setCountRes(data)
             })
 
-    }, [filter] [countRes])
+    }, [filter, countRes, searchText])
 
     // Fetch result from database using the searchText
     useEffect(()=>{
@@ -42,7 +42,7 @@ const Results = () => {
                 setSearchResult(data)
             })
 
-    }, [searchText] [filter])
+    }, [searchText, filter, sortBy, count])
 
 
     // These three functions are used to update the result based on change from the user
