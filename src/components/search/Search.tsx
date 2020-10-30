@@ -1,39 +1,21 @@
 import {Button, Form, FormControl} from "react-bootstrap";
 import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
-//import {log} from "util";
 
+/**
+ * Component for showing a searchbar
+ * The search word will be sent to the result page for further database fetch
+ */
 const Search = () => {
-
-    //const [searchResult, setSearchResult] = useState([])
-    const [searchText, setSearchText] = useState("")
+    const [searchText, setSearchText] = useState<string>("")
     const history = useHistory();
 
-    /*useEffect(() => {
-        console.log(searchResult)
-    }, [searchResult])
 
-    const fetchData = () => {
-        fetch(`http://localhost:4000/books/search/${searchText}`)
-            .then(response => response.json())
-            .then((data) => {          setSearchResult(data)
-
-            })
-        console.log(searchResult)
-    }*/
+    const handleSearchSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault()
 
 
-    const handleSearchSubmit = (event:any) => {
-        event.preventDefault()
-        //fetchData()
-
-
-
-
-        //Det eneste denne gjør for øyeblikket er å route til results og sende med searchText som param
-        //Må hente relevant data fra datasett ved å bruke searchText
         if (searchText !== "") {
-            //console.log(searchText)
             history.push(`/results/${searchText}`)
         } else {
             alert("Please enter some search text!");

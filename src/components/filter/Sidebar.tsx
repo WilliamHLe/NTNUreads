@@ -3,20 +3,20 @@ import ShowRating from "./ShowRating";
 import {Button, Form} from "react-bootstrap";
 
 interface SideBarProps {
-    chang: any;
+    changeFilter: (ct:string) => void
 }
-const Sidebar = ({chang}: SideBarProps) => {
-    const [radio, setRadio] = useState("")
+const Sidebar = ({changeFilter}: SideBarProps) => {
+    const [radio, setRadio] = useState<string>("")
 
-    const handleChange = (e:any) => {
-        chang(e.target.value)
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        changeFilter(e.target.value)
     }
     const reset = () => {
         setRadio("")
-        chang("")
+        changeFilter("")
     }
 
-    const changeRadio = (e:any) => {
+    const changeRadio = (e: React.ChangeEvent<HTMLInputElement>) => {
         setRadio(e.target.value)
     }
 

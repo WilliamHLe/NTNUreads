@@ -4,7 +4,7 @@ import {Container, Row, Col, Button, Table} from 'react-bootstrap';
 import {useParams} from "react-router-dom";
 import {ListGroup} from "react-bootstrap";
 import AddFavorite from "../components/user/AddFavorite"
-import CreateReview from "../components/CreateReview";
+import CreateReview from "../components/review/CreateReview";
 
 const Detailed = () => {
 
@@ -23,7 +23,6 @@ const Detailed = () => {
         fetch(`http://localhost:4000/review/${id}`)
             .then(response => response.json())
             .then((data) => {
-                console.log("sup");
                 setReview(data)
             })
     },[id,book,review])

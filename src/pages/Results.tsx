@@ -1,38 +1,26 @@
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import {Container, Row, Col, Button, Table} from 'react-bootstrap';
-import Sidebar from "../components/filter/Sidebar";
 import {useHistory} from "react-router-dom";
 
 import Page from "../components/Page";
 import Sorting from "../components/Sorting";
+import Sidebar from "../components/filter/Sidebar";
 
-
+/**
+ * This component shows the result of the search
+ */
 const Results = () => {
-    //her kan vi ha search component for å initialisere nytt søk, og også inkludere komponent for
-    //filtrering og sortering
     const { searchText } = useParams()
     const [searchResult, setSearchResult] = useState<any[]>([])
     const [count, setCount] = useState(0)
     const [countRes, setCountRes] = useState(0)
-    const [sortBy, setSortBy] = useState<any>(null)
+    const [sortBy, setSortBy] = useState<string | null>(null)
     const [filter, setFilter] = useState<any>("")
     //const [bookId,setBookId] = useState<any>()
     const history = useHistory();
 
-    useEffect(() => {
-        console.log(countRes)
-    }, [filter])
-
-  /*  useEffect(()=>{
-        fetch(`http://localhost:4000/books/search/${searchText}`)
-            .then(response => response.json())
-            .then((data) => {
-                setCountRes(data)
-            })
-
-    }, [countRes])*/
-
+    // Count the amount of elements from result
     useEffect(()=>{
         fetch(`http://localhost:4000/books/search/${searchText}/${filter}`)
             .then(response => response.json())
@@ -42,7 +30,7 @@ const Results = () => {
 
     }, [filter] [countRes])
 
-
+    // Fetch result from database using the searchText
     useEffect(()=>{
         fetch(`http://localhost:4000/books/search/${searchText}/${count}/${sortBy}/${filter}`)
             .then(response => response.json())
@@ -53,21 +41,19 @@ const Results = () => {
     }, [searchText] [filter])
 
 
-
-
-
-    const handlePagination = (ct:any) => {
+    // These three functions are used to update the result based on change from the user
+    const handlePagination = (ct:number) => {
         setCount(ct)
     }
 
-    const handleSort = (ct:any) => {
+    const handleSort = (ct:string) => {
         setSortBy(ct)
     }
 
-    const handleFilter = (ct:any) => {
+    const handleFilter = (ct:string) => {
         setFilter(ct)
-
     }
+
 
 
     const [showFilters, setShowFilters] = useState(false)
@@ -94,16 +80,16 @@ const Results = () => {
                         </Button>
                         <br/>
                         <div className={"collapse" + show}>
-                            <Sidebar chang={handleFilter}/>
+                            <Sidebar changeFilter={handleFilter}/>
                         </div>
                     </Col>
                     {/*This column is hidden at screens smaller than md*/}
                     <Col md={3} className={"d-none d-md-block"}>
-                        <Sidebar chang={handleFilter}/>
+                        <Sidebar changeFilter={handleFilter}/>
                     </Col>
                     <Col  md={9} className="page-content-wrapper">
                         <h5>Dette er resultatene fra søket: {searchText}</h5>
-                        <Sorting chan={handleSort} />
+                        <Sorting changeSort={handleSort} />
                         <Table striped bordered hover  style={{tableLayout: "auto"}}>
                             <thead>
                             <tr>
@@ -124,7 +110,6 @@ const Results = () => {
                                     <td><Button onClick={() => toDetails(item._id)}>Detaljer</Button></td>
                                 </tr>
                             )}
-
                             </tbody>
                         </Table>
                         <Page change={handlePagination} countRes={countRes}/>
