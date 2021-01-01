@@ -13,7 +13,7 @@ NTNUreads er en nettside der du kan søke og finne din favorittbok. Brukeren har
 2. Kjør `npm install` og deretter `npm start`
 3. Aktiver databasen ved å åpne et nytt kommandovindu og gå inn i backend mappen:
 `cd backend`
-4. Kjør `nodemon server.js`. Husk å være koblet til NTNU-nettet.
+4. Kjør `npm start`. Husk å være koblet til NTNU-nettet.
 
 Nettsiden er tilgjengelig på http://localhost:3000/
 
