@@ -13,9 +13,11 @@ NTNUreads er en nettside der du kan søke og finne din favorittbok. Brukeren har
 2. Kjør `npm install` og deretter `npm start`
 3. Aktiver databasen ved å åpne et nytt kommandovindu og gå inn i backend mappen:
 `cd backend`
-4. Kjør `npm start`. Husk å være koblet til NTNU-nettet.
+4. Kjør `npm start`
 
-Nettsiden er tilgjengelig på http://localhost:3000/
+Nettsiden er tilgjengelig på http://localhost:3000/ lokalt eller live på [https://ntnueads.herokuapp.com/](https://https://ntnueads.herokuapp.com/)
+
+> Husk å være koblet til NTNU-nettet enten du kjører lokalt eller live.
 
 ## Teknologier
 Vi har valgt å bruke MERN-stack for å lage applikasjonen. MERN-stack består av MongoDB, ExpressJS, React og NodeJS. I tillegg har vi brukt Redux for global state-håndtering.
