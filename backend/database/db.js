@@ -1,3 +1,3 @@
 module.exports = {
-    db: 'mongodb://siverhog:siverhog2810gruppe13@it2810-13.idi.ntnu.no:27017/it281013p3'
+    db: 'mongodb+srv://williahl:wilymongo23@cluster0.ok9no.mongodb.net/test?authSource=admin&replicaSet=atlas-e37pef-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true'
 };
