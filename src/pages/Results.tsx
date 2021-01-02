@@ -26,7 +26,7 @@ const Results = () => {
 
     // Count the amount of elements from result
     useEffect(()=>{
-        fetch(`http://localhost:4000/books/search/${searchText}/${filter}`)
+        fetch(`/books/search/${searchText}/${filter}`)
             .then(response => response.json())
             .then((data) => {
                 setCountRes(data)
