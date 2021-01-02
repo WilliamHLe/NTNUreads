@@ -37,7 +37,12 @@ app.use('/books', bookRoute)
 app.use('/favorite', favoriteRoute)
 app.use('/review', reviewRoute)
 
-
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('./build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    });
+}
 // PORT
 const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {
@@ -54,3 +59,4 @@ app.use(function (err, req, res, next) {
     if (!err.statusCode) err.statusCode = 500;
     res.status(err.statusCode).send(err.message);
 });
+
