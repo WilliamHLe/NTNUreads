@@ -36,7 +36,7 @@ const Results = () => {
 
     // Fetch result from database using the searchText
     useEffect(()=>{
-        fetch(`http://localhost:4000/books/search/${searchText}/${count}/${sortBy}/${filter}`)
+        fetch(`/books/search/${searchText}/${count}/${sortBy}/${filter}`)
             .then(response => response.json())
             .then((data) => {
                 setSearchResult(data)
