@@ -37,7 +37,9 @@ app.use('/books', bookRoute)
 app.use('/favorite', favoriteRoute)
 app.use('/review', reviewRoute)
 
-
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 // PORT
 const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {
