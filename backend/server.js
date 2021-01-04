@@ -9,7 +9,7 @@ const userRoute = require('../backend/routes/user.routes')
 const bookRoute = require('../backend/routes/book.routes')
 const favoriteRoute = require('../backend/routes/favorite.routes')
 const reviewRoute = require('../backend/routes/review.routes')
-
+const path = require("path")
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
@@ -37,6 +37,11 @@ app.use('/books', bookRoute)
 app.use('/favorite', favoriteRoute)
 app.use('/review', reviewRoute)
 
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 // PORT
 const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {

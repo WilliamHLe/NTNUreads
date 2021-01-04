@@ -26,7 +26,7 @@ const Results = () => {
 
     // Count the amount of elements from result
     useEffect(()=>{
-        fetch(`https://ntnueads.herokuapp.com/books/search/${searchText}/${filter}`)
+        fetch(`http://localhost:4000/books/search/${searchText}/${filter}`)
             .then(response => response.json())
             .then((data) => {
                 setCountRes(data)
@@ -36,7 +36,7 @@ const Results = () => {
 
     // Fetch result from database using the searchText
     useEffect(()=>{
-        fetch(`https://ntnueads.herokuapp.com/books/search/${searchText}/${count}/${sortBy}/${filter}`)
+        fetch(`http://localhost:4000/books/search/${searchText}/${count}/${sortBy}/${filter}`)
             .then(response => response.json())
             .then((data) => {
                 setSearchResult(data)
