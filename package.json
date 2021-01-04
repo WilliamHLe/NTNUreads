@@ -35,7 +35,7 @@
   "scripts": {
     "client": "react-scripts start",
     "server": "cd backend & npm start",
-    "start": "npm-run-all -p server client",
+    "start": "npm server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
