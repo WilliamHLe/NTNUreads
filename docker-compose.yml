@@ -24,3 +24,5 @@ services:
     volumes:
       - /usr/src/app/node_modules
       - ./backend:/usr/src/app
+    environment:
+      CHOKIDAR_USEPOLLING: "true"

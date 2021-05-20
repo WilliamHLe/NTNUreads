@@ -26,3 +26,7 @@ const port = process.env.PORT || 4000;
 app.listen(port, () => {
     console.log('Connected to port ' + port)
 })
+
+app.use('/', (req, res) => {
+    res.send('Port ' + port + ' is running!')
+})
