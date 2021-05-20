@@ -8,6 +8,7 @@ services:
       # Context specifies where we pull the files/folder from
       context: .
       dockerfile: Dockerfile.dev
+    # Map local port to container port
     ports:
       - "3000:3000"
     volumes:
@@ -23,6 +24,8 @@ services:
     - "4000:4000"
     volumes:
       - /usr/src/app/node_modules
+      # To not map the local backend folder to container
       - ./backend:/usr/src/app
     environment:
+      # Make sure backend is hot reloaded (windows problem)
       CHOKIDAR_USEPOLLING: "true"
